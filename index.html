@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>image gallery</title>
+    <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body onload="onInit()">
+    <header class="main-header">
+        <span class="logo">logo here</span>
+        <ul class="header-links">
+            <li><a href="../html/index.html">Gallery</a></li>
+            <li><a href="../html/saved.html">Memes</a></li>
+            <li><a href="../html/about.html">About</a></li>
+        </ul>
+    </header>
+    <div class="gallery-container">
+        <img class='${image.id}' src='../assets/images/1.jpg'>
+    </div>
+    <script src="../main.js"></script>
+    <script src="../services/meme-service.js"></script>
+</body>
+</html>
