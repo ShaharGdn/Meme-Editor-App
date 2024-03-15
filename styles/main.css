@@ -1,0 +1,26 @@
+* {
+    box-sizing: border-box;
+}
+
+.canvas-container {
+    width: 400px;
+    height: 400px;
+}
+
+.main-canvas {
+    border: 1px solid black;
+}
+
+.gallery-container {
+    display: grid;
+    grid-auto-flow: column;
+    column-gap: 1em;
+    grid-auto-columns: 120px;
+}
+
+img.gallery-img {
+    height: 100px;
+    cursor: pointer;
+    -webkit-user-drag: none;
+    pointer-events: none;
+}
