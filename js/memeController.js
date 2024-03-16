@@ -9,14 +9,6 @@ var gImgs = [
     { id: 3, url: '../assets/images/3.jpg', keywords: ['baby', 'cute'] },
 ]
 
-var gTextSettings = {
-    font: 'Arial',
-    size: '30px',
-    color: 'black',
-    stroke: 'white',
-    align: 'center'
-}
-
 var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
 
 function onInit() {
@@ -75,24 +67,41 @@ function coverCanvasWithImg(elImg) {
     elModal.showModal()
 }
 
-function drawText(text, x, y) {
-	gCtx.lineWidth = 0.5
-	gCtx.strokeStyle = gTextSettings.stroke
-
-	gCtx.fillStyle = gTextSettings.color
-
-	gCtx.font = `${gTextSettings.size} ${gTextSettings.font}`
-	gCtx.textAlign = gTextSettings.align
-	// gCtx.textBaseline = 'middle'
-
-	gCtx.fillText(text, x, y)
-	gCtx.strokeText(text, x, y)
-}
-
 function getElImg() {
     const meme = getMeme()
 
     const elImg = document.querySelector(`.img${meme.selectedImgId}`)
 
     return elImg
+}
+
+function onDownloadCanvas(elLink) {
+    const meme = getMeme()
+
+	elLink.href = '#'
+	const dataUrl = gElCanvas.toDataURL()
+
+	elLink.href = dataUrl
+	elLink.download = `meme${meme.selectedImgId}`
+}
+
+function onFillColorChange(color) {
+    setFillColor(color)
+    renderMeme()
+}
+
+function onStrokeColorChange(color) {
+    setStrokeColor(color)
+    renderMeme()
+}
+
+function onIncreaseFont(ev) {
+    ev.preventDefault()
+    increaseFontSize()
+    renderMeme()
+}
+function onDecreaseFont(ev) {
+    ev.preventDefault()
+    decreaseFontSize()
+    renderMeme()
 }
