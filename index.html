@@ -4,21 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>image gallery</title>
-    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="styles/main.css">
 </head>
 <body onload="onInit()">
+
     <header class="main-header">
         <span class="logo">logo here</span>
         <ul class="header-links">
-            <li><a href="../html/index.html">Gallery</a></li>
-            <li><a href="../html/saved.html">Memes</a></li>
-            <li><a href="../html/about.html">About</a></li>
+            <li><a href="html/index.html">Gallery</a></li>
+            <li><a href="html/saved.html">Memes</a></li>
+            <li><a href="html/about.html">About</a></li>
         </ul>
     </header>
+
     <div class="gallery-container">
-        <img class='${image.id}' src='../assets/images/1.jpg'>
     </div>
-    <script src="../main.js"></script>
-    <script src="../services/meme-service.js"></script>
+
+    <dialog class="editor-modal">
+        <form action="" method="dialog" class="editor-form">
+            <button formmethod="dialog">back to gallery ></button>
+            <div class="canvas-container">
+                <canvas class="main-canvas" height="400" width="400"></canvas>
+            </div>
+        </form>
+    </dialog>
+
+
+    <script src="memeController.js"></script>
+    <script src="services/meme-service.js"></script>
 </body>
 </html>
