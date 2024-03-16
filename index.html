@@ -22,15 +22,16 @@
 
     <dialog class="editor-modal">
         <form action="" method="dialog" class="editor-form">
-            <button formmethod="dialog">back to gallery ></button>
+            <button formmethod="dialog"> back to gallery </button>
             <div class="canvas-container">
                 <canvas class="main-canvas" height="400" width="400"></canvas>
+                <input type="text" autofocus oninput="onTxtInput(this.value)">
             </div>
         </form>
     </dialog>
 
 
-    <script src="memeController.js"></script>
-    <script src="services/meme-service.js"></script>
+    <script src="./js/memeController.js"></script>
+    <script src="js/services/meme-service.js"></script>
 </body>
 </html>
