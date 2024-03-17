@@ -2,6 +2,7 @@
 
 let gElCanvas
 let gCtx
+const currMeme = getMeme()
 
 var gImgs = [
     { id: 1, url: '../assets/images/1.jpg', keywords: ['funny', 'trump'] },
@@ -20,13 +21,11 @@ function onInit() {
 
 function renderImages() {
     const elGallery = document.querySelector('.gallery-container')
-    console.log('elGallery:', elGallery)
 
     var imageHTML = gImgs.map(image => {
         return `<img class='gallery-img img${image.id}' src='${image.url}' data-id='${image.id}' onclick=onImgSelect(this)>`
     })
 
-    console.log('imageHTML:', imageHTML)
     elGallery.innerHTML = imageHTML.join('')
 }
 
@@ -34,26 +33,29 @@ function onImgSelect(elImg) {
     const imgId = elImg.dataset.id
     setImg(imgId)
 
-    // coverCanvasWithImg(elImg)
     renderMeme()
 }
 
 function renderMeme() {
     const meme = getMeme()
     const elImg = getElImg()
-    
+
     coverCanvasWithImg(elImg)
 
-    const {lines} = meme
-    
+    const { lines } = meme
+
     lines.forEach(line => {
-        drawText(line.txt,200,50)
+        drawText(line.txt, line.idx)
     })
+
+
+    setCurrLineInput()
 }
 
-
-function onTxtInput(input) {
-    setLineTxt(input, 0)
+function onTxtInput(elInput) {
+    const lineIdx = elInput.dataset.idx
+    const value = elInput.value
+    setLineTxt(value)
 
     renderMeme()
 }
@@ -78,11 +80,11 @@ function getElImg() {
 function onDownloadCanvas(elLink) {
     const meme = getMeme()
 
-	elLink.href = '#'
-	const dataUrl = gElCanvas.toDataURL()
+    elLink.href = '#'
+    const dataUrl = gElCanvas.toDataURL()
 
-	elLink.href = dataUrl
-	elLink.download = `meme${meme.selectedImgId}`
+    elLink.href = dataUrl
+    elLink.download = `meme${meme.selectedImgId}`
 }
 
 function onFillColorChange(color) {
@@ -104,4 +106,77 @@ function onDecreaseFont(ev) {
     ev.preventDefault()
     decreaseFontSize()
     renderMeme()
+}
+
+function onAddLine(ev) {
+    const elLinesContainer = document.querySelector('.lines-container')
+
+    ev.preventDefault()
+
+    addLine()
+
+    // const html =  `<input type="text" oninput="onTxtInput(this)" data-idx=${meme.lines.length} placeholder="Enter text here">`
+    // elLinesContainer.innerHTML += html
+
+    renderMeme()
+}
+
+function onSwitchLine(ev) {
+    ev.preventDefault()
+
+    switchSelectedLine()
+    drawFrame()
+    setCurrLineInput()
+}
+
+
+function drawFrame() {
+    console.log('currMeme.lines:', currMeme.lines)
+    const text = currMeme.lines[currMeme.selectedLineIdx - 1].txt
+
+    const textMetrics = gCtx.measureText(text)
+    const textWidth = textMetrics.width;
+    const textHeight = parseInt(gTextSettings.size)
+
+
+    drawRect((gElCanvas.width - textWidth) / 2, textHeight - 5, textWidth, textHeight)
+}
+
+function drawRect(x, y, textWidth, textHeight) {
+    gCtx.strokeStyle = 'black'
+    gCtx.lineWidth = 1
+    gCtx.strokeRect(x, y, textWidth + 5, textHeight)
+}
+
+function drawText(text, lineIdx) {
+    gCtx.font = `${gTextSettings.size}px ${gTextSettings.font}`
+
+    const textMetrics = gCtx.measureText(text)
+    const textWidth = textMetrics.width;
+    const textHeight = parseInt(gTextSettings.size)
+
+    gCtx.lineWidth = 0.5
+    gCtx.strokeStyle = gTextSettings.stroke
+
+    var y = lineIdx * 50
+
+
+    gCtx.fillStyle = gTextSettings.color
+    gCtx.textAlign = gTextSettings.align
+
+    gCtx.fillText(text, 200, y)
+    gCtx.strokeText(text, 200, y)
+
+
+    if (lineIdx === currMeme.selectedLineIdx) {
+        drawRect((gElCanvas.width - textWidth) / 2, textHeight - 5, textWidth, textHeight)
+    }
+}
+
+function setCurrLineInput() {
+    const currLineIdx = currMeme.selectedLineIdx
+
+    const elInput = document.querySelector('.text-input')
+
+    elInput.value = currMeme.lines[currLineIdx - 1].txt
 }

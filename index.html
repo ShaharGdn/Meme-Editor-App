@@ -32,17 +32,21 @@
             <input id="stroke-color" type="color" onchange="onStrokeColorChange(this.value)">
             <button class="increase-font" onclick="onIncreaseFont(event)">+</button>
             <button class="decrease-font" onclick="onDecreaseFont(event)">-</button>
-            
-            <a href="#" onclick="onDownloadCanvas(this)">Download</a>
-            <input type="text" autofocus oninput="onTxtInput(this.value)">
+            <button class="add-line" onclick="onAddLine(event)">Add Line</button>
 
+            <a href="#" onclick="onDownloadCanvas(this)">Download</a>
+
+            <section class="lines-container">
+                <input class="text-input" type="text" autofocus oninput="onTxtInput(this)" data-idx=1 placeholder="Enter text here">
+            </section>
+
+            <button class="switch-lines" onclick="onSwitchLine(event)">Switch Lines</button>
         </form>
     </dialog>
 
 
-    <script src="js/memeController.js"></script>
     <script src="js/services/meme-service.js"></script>
-    <script src="assets/lib/dist/vanilla-picker.js"></script>
+    <script src="js/memeController.js"></script>
 </body>
 
 </html>
