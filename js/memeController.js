@@ -13,8 +13,8 @@ function renderMeme() {
     lines.forEach(line => {
         drawText(line.txt, line.idx)
     })
-    
-    
+
+
     setCurrLineInput()
 }
 
@@ -65,11 +65,13 @@ function backToGallery() {
 function onFillColorChange(color) {
     setFillColor(color)
     renderMeme()
+    drawFrame()
 }
 
 function onStrokeColorChange(color) {
     setStrokeColor(color)
     renderMeme()
+    drawFrame()
 }
 
 function onIncreaseFont(ev) {
@@ -77,6 +79,8 @@ function onIncreaseFont(ev) {
 
     increaseFontSize()
     renderMeme()
+    drawFrame()
+
 }
 
 function onDecreaseFont(ev) {
@@ -84,13 +88,15 @@ function onDecreaseFont(ev) {
 
     decreaseFontSize()
     renderMeme()
+    drawFrame()
+
 }
 
 function onAddLine(ev) {
     ev.preventDefault()
 
     addLine()
-    
+
     renderMeme()
     drawFrame()
 }
@@ -144,7 +150,11 @@ function drawFrame() {
 
     const { x, y } = calculateRectPosition(currLine.pos.x, currLine.pos.y, textWidth, currLine.size, gCtx.textAlign)
 
+<<<<<<< HEAD
     drawRect(x -10 , y, textWidth +20 , textHeight +10)
+=======
+    drawRect(x - 10, y, textWidth + 20, textHeight + 10)
+>>>>>>> be7d2da (Add support for selectable lines)
 
     gCtx.restore()
 }
