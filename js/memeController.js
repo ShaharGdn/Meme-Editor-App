@@ -15,9 +15,10 @@ function renderMeme() {
     lines.forEach(line => {
         drawText(line.txt, line.idx)
     })
-
-
+    
+    
     setCurrLineInput()
+    drawFrame()
 }
 
 function onTxtInput(elInput) {
@@ -98,6 +99,7 @@ function onAddLine(ev) {
     ev.preventDefault()
 
     addLine()
+    
     renderMeme()
 }
 
@@ -127,71 +129,59 @@ function drawText(text, lineIdx) {
     gCtx.lineWidth = 0.5
     gCtx.strokeStyle = currLine.stroke
 
-    // var y = lineIdx * 50
-
 
     gCtx.fillStyle = currLine.color
     gCtx.textAlign = currLine.align
 
     gCtx.fillText(text, pos.x, pos.y)
     gCtx.strokeText(text, pos.x, pos.y)
-
-
-    // if (lineIdx === currMeme.selectedLineIdx) {
-    //     drawRect((gElCanvas.width - textWidth) / 2, textHeight - 5, textWidth, textHeight)
-    // }
 }
-// function drawText(text, lineIdx) {
-//     gCtx.font = `${gTextSettings.size}px ${gTextSettings.font}`
-
-//     const textMetrics = gCtx.measureText(text)
-//     const textWidth = textMetrics.width;
-//     const textHeight = parseInt(gTextSettings.size)
-
-//     gCtx.lineWidth = 0.5
-//     gCtx.strokeStyle = gTextSettings.stroke
-
-//     var y = lineIdx * 50
-
-
-//     gCtx.fillStyle = gTextSettings.color
-//     gCtx.textAlign = gTextSettings.align
-
-//     gCtx.fillText(text, 200, y)
-//     gCtx.strokeText(text, 200, y)
-
-
-//     // if (lineIdx === currMeme.selectedLineIdx) {
-//     //     drawRect((gElCanvas.width - textWidth) / 2, textHeight - 5, textWidth, textHeight)
-//     // }
-// }
 
 function drawFrame() {
-    currMeme = getMeme()
+    const currMeme = getMeme();
+    const currLine = currMeme.lines[currMeme.selectedLineIdx - 1];
 
-    const text = currMeme.lines[currMeme.selectedLineIdx - 1].txt
+    gCtx.save();
 
-    const textMetrics = gCtx.measureText(text)
+    gCtx.font = `${currLine.size}px ${currLine.font}`;
+    gCtx.textAlign = currLine.align;
+
+    const textMetrics = gCtx.measureText(currLine.txt);
     const textWidth = textMetrics.width;
-    const textHeight = parseInt(gTextSettings.size)
+    const textHeight = currLine.size; 
 
+    const { x, y } = calculateRectPosition(currLine.pos.x, currLine.pos.y +5, textWidth, currLine.size, gCtx.textAlign);
 
-    drawRect((gElCanvas.width - textWidth) / 2, textHeight - 5, textWidth, textHeight)
+    drawRect(x, y, textWidth, textHeight);
+
+    gCtx.restore();
 }
 
 function drawRect(x, y, textWidth, textHeight) {
-    gCtx.strokeStyle = 'black'
-    gCtx.lineWidth = 1
-    gCtx.strokeRect(x, y, textWidth + 5, textHeight)
+    gCtx.strokeStyle = 'red';
+    gCtx.lineWidth = 1;
+    gCtx.strokeRect(x, y, textWidth, textHeight);
 }
+
+function calculateRectPosition(x, y, textWidth, textSize, textAlign) {
+    let rectX = x;
+    let rectY = y - textSize; // Adjusted y-coordinate to position the frame above the text
+
+    if (textAlign === 'center') {
+        rectX -= textWidth / 2; // Adjust x-coordinate for center alignment
+    } else if (textAlign === 'right') {
+        rectX -= textWidth; // Adjust x-coordinate for right alignment
+    }
+    return { x: rectX, y: rectY };
+}
+
 
 function setCurrLineInput() {
     currMeme = getMeme()
-
-
     const currLineIdx = currMeme.selectedLineIdx
+    const currLine = currMeme.lines[currLineIdx - 1]
 
     const elInput = document.querySelector('.text-input')
 
-    elInput.value = currMeme.lines[currLineIdx - 1].txt
+    elInput.value = currLine.txt
 }

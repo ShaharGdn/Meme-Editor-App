@@ -2,20 +2,12 @@
 
 var gMeme
 
-// var gMeme = {
-//     selectedImgId: 5,
-//     selectedLineIdx: 1,
-//     lines: [
-//         { txt: 'I sometimes eat Falafel', size: 20, stroke: 'red', color: 'black', align: 'center', idx: 1, pos: { x: 200, y: 50 }, isDrag: false },
-//     ]
-// }
-
 function createMeme(imgId) {
     gMeme = {
         selectedImgId: imgId,
         selectedLineIdx: 1,
         lines: [
-            { txt: 'I sometimes eat Falafel', size: 20, stroke: 'red', color: 'black', align: 'center', idx: 1, pos: { x: 200, y: 50 }, isDrag: false },
+            { txt: 'I sometimes eat Falafel', size: 30, stroke: 'white', color: 'white', align: 'left', idx: 1, pos: { x: 50, y: 50 }, isDrag: false },
         ]
     }
 
@@ -74,33 +66,24 @@ function decreaseFontSize() {
 }
 
 function addLine() {
-    // gMeme.lines.push({ txt: 'Enter Text', idx: `${gMeme.lines.length + 1}` })
     const y = gMeme.lines[gMeme.lines.length - 1].pos.y + 50
+    
+    gMeme.lines.push({ txt: 'Enter Text', size: 20, stroke: 'white', color: 'white', align: 'left', idx: `${gMeme.lines.length + 1}`, pos: { x: 50, y }, isDrag: false })
 
-    gMeme.lines.push({ txt: 'Enter Text', size: 20, stroke: 'red', color: 'black', align: 'center', idx: `${gMeme.lines.length + 1}`, pos: { x: 200, y }, isDrag: false })
+    gMeme.selectedLineIdx = gMeme.lines.length
 }
 
 
 function switchSelectedLine() {
-    // if (gMeme.selectedLineIdx >= gMeme.lines.length) {
-    //     gMeme.selectedLineIdx = 1
-    //     return
-    // }
-    // gMeme.selectedLineIdx++
-
-    console.log(gMeme.selectedLineIdx)
-
-    if (gMeme.selectedLineIdx === 0) {
+    if (gMeme.selectedLineIdx >= gMeme.lines.length) {
         gMeme.selectedLineIdx = 1
+        renderMeme()
+        drawFrame()
         return
     }
-    if (gMeme.selectedLineIdx === 1) {
-        gMeme.selectedLineIdx = 2
-        return
-    }
-    if (gMeme.selectedLineIdx === 2) {
-        gMeme.selectedLineIdx = 1
-        return
-    }
+    gMeme.selectedLineIdx++
+    renderMeme()
+    drawFrame()
 
+    return
 }
