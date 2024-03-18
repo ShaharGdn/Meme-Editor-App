@@ -1,7 +1,5 @@
 'use strict'
 
-let gElCanvas
-let gCtx
 let currMeme
 
 function renderMeme() {
@@ -18,11 +16,9 @@ function renderMeme() {
     
     
     setCurrLineInput()
-    drawFrame()
 }
 
 function onTxtInput(elInput) {
-    const lineIdx = elInput.dataset.idx
     const value = elInput.value
     setLineTxt(value)
 
@@ -41,7 +37,6 @@ function coverCanvasWithImg(elImg) {
 }
 
 function getElImg() {
-    // const meme = getMeme()
     currMeme = getMeme()
 
     const elImg = document.querySelector(`.img${currMeme.selectedImgId}`)
@@ -50,7 +45,7 @@ function getElImg() {
 }
 
 function onDownloadCanvas(elLink) {
-    // const meme = getMeme()
+    const currMeme = getMeme()
 
     elLink.href = '#'
     const dataUrl = gElCanvas.toDataURL()
@@ -60,7 +55,6 @@ function onDownloadCanvas(elLink) {
 }
 
 function backToGallery() {
-
     const elEditor = document.querySelector('.meme-editor')
     const elGallery = document.querySelector('.gallery-container')
 
@@ -93,14 +87,12 @@ function onDecreaseFont(ev) {
 }
 
 function onAddLine(ev) {
-    // const elLinesContainer = document.querySelector('.lines-container')
-    // const html =  `<input type="text" oninput="onTxtInput(this)" data-idx=${meme.lines.length} placeholder="Enter text here">`
-    // elLinesContainer.innerHTML += html
     ev.preventDefault()
 
     addLine()
     
     renderMeme()
+    drawFrame()
 }
 
 function onSwitchLine(ev) {
@@ -138,41 +130,41 @@ function drawText(text, lineIdx) {
 }
 
 function drawFrame() {
-    const currMeme = getMeme();
-    const currLine = currMeme.lines[currMeme.selectedLineIdx - 1];
+    const currMeme = getMeme()
+    const currLine = currMeme.lines[currMeme.selectedLineIdx - 1]
 
-    gCtx.save();
+    gCtx.save()
 
-    gCtx.font = `${currLine.size}px ${currLine.font}`;
-    gCtx.textAlign = currLine.align;
+    gCtx.font = `${currLine.size}px ${currLine.font}`
+    gCtx.textAlign = currLine.align
 
-    const textMetrics = gCtx.measureText(currLine.txt);
-    const textWidth = textMetrics.width;
-    const textHeight = currLine.size; 
+    const textMetrics = gCtx.measureText(currLine.txt)
+    const textWidth = textMetrics.width
+    const textHeight = currLine.size
 
-    const { x, y } = calculateRectPosition(currLine.pos.x, currLine.pos.y +5, textWidth, currLine.size, gCtx.textAlign);
+    const { x, y } = calculateRectPosition(currLine.pos.x, currLine.pos.y, textWidth, currLine.size, gCtx.textAlign)
 
-    drawRect(x, y, textWidth, textHeight);
+    drawRect(x -10 , y, textWidth +20 , textHeight +10)
 
-    gCtx.restore();
+    gCtx.restore()
 }
 
 function drawRect(x, y, textWidth, textHeight) {
-    gCtx.strokeStyle = 'red';
-    gCtx.lineWidth = 1;
-    gCtx.strokeRect(x, y, textWidth, textHeight);
+    gCtx.strokeStyle = 'red'
+    gCtx.lineWidth = 1
+    gCtx.strokeRect(x, y, textWidth, textHeight)
 }
 
 function calculateRectPosition(x, y, textWidth, textSize, textAlign) {
-    let rectX = x;
-    let rectY = y - textSize; // Adjusted y-coordinate to position the frame above the text
+    let rectX = x
+    let rectY = y - textSize // Adjusted y-coordinate to position the frame above the text
 
     if (textAlign === 'center') {
-        rectX -= textWidth / 2; // Adjust x-coordinate for center alignment
+        rectX -= textWidth / 2 // Adjust x-coordinate for center alignment
     } else if (textAlign === 'right') {
         rectX -= textWidth; // Adjust x-coordinate for right alignment
     }
-    return { x: rectX, y: rectY };
+    return { x: rectX, y: rectY }
 }
 
 
