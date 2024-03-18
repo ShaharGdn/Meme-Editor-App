@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>image gallery</title>
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/helpers.css">
+    <script src="https://kit.fontawesome.com/c705052b04.js" crossorigin="anonymous"></script>
 </head>
 
 <body onload="onInit()">
@@ -22,30 +24,29 @@
     <div class="gallery-container">
     </div>
 
-    <dialog class="editor-modal">
-        <form method="dialog" class="editor-form">
-            <button formmethod="dialog"> back to gallery </button>
-            <div class="canvas-container">
-                <canvas class="main-canvas" height="400" width="400"></canvas>
-            </div>
-            <input id="fill-color" type="color" onchange="onFillColorChange(this.value)">
-            <input id="stroke-color" type="color" onchange="onStrokeColorChange(this.value)">
-            <button class="increase-font" onclick="onIncreaseFont(event)">+</button>
-            <button class="decrease-font" onclick="onDecreaseFont(event)">-</button>
-            <button class="add-line" onclick="onAddLine(event)">Add Line</button>
 
-            <a href="#" onclick="onDownloadCanvas(this)">Download</a>
+    <section class="meme-editor hide">
+        <button onclick="backToGallery()"> back to gallery </button>
+        <div class="canvas-container">
+            <canvas class="main-canvas" height="400" width="400"></canvas>
+        </div>
+        <input id="fill-color" type="color" onchange="onFillColorChange(this.value)">
+        <input id="stroke-color" type="color" onchange="onStrokeColorChange(this.value)">
+        <button class="increase-font" onclick="onIncreaseFont(event)">+</button>
+        <button class="decrease-font" onclick="onDecreaseFont(event)">-</button>
+        <button class="add-line" onclick="onAddLine(event)">Add Line</button>
 
-            <section class="lines-container">
-                <input class="text-input" type="text" autofocus oninput="onTxtInput(this)" data-idx=1 placeholder="Enter text here">
-            </section>
+        <a href="#" onclick="onDownloadCanvas(this)">Download</a>
 
-            <button class="switch-lines" onclick="onSwitchLine(event)">Switch Lines</button>
-        </form>
-    </dialog>
+        <section class="lines-container">
+            <input class="text-input" type="text" autofocus oninput="onTxtInput(this)" data-idx=1 placeholder="Enter text here">
+        </section>
 
+        <button class="switch-lines" onclick="onSwitchLine(event)">Switch Lines</button>
+    </section>
 
     <script src="js/services/meme-service.js"></script>
+    <script src="js/galleryController.js"></script>
     <script src="js/memeController.js"></script>
 </body>
 

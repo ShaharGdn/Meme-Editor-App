@@ -1,22 +1,25 @@
 'use strict'
 
-// var gMeme
+var gMeme
 
-var gMeme = {
-    selectedImgId: 5,
-    selectedLineIdx: 1,
-    lines: [
-        { txt: 'I sometimes eat Falafel', size: 20, color: 'red', idx: 1 },
-        // { txt: 'Im a goat', size: 20, color: 'red' , idx: 2 }
-    ]
-}
+// var gMeme = {
+//     selectedImgId: 5,
+//     selectedLineIdx: 1,
+//     lines: [
+//         { txt: 'I sometimes eat Falafel', size: 20, stroke: 'red', color: 'black', align: 'center', idx: 1, pos: { x: 200, y: 50 }, isDrag: false },
+//     ]
+// }
 
-var gTextSettings = {
-    font: 'Arial',
-    size: 30,
-    color: 'black',
-    stroke: 'white',
-    align: 'center'
+function createMeme(imgId) {
+    gMeme = {
+        selectedImgId: imgId,
+        selectedLineIdx: 1,
+        lines: [
+            { txt: 'I sometimes eat Falafel', size: 20, stroke: 'red', color: 'black', align: 'center', idx: 1, pos: { x: 200, y: 50 }, isDrag: false },
+        ]
+    }
+
+    return gMeme
 }
 
 function getMeme() {
@@ -32,36 +35,49 @@ function setImg(id) {
 }
 
 function setLineTxt(text) {
-    var idx = gMeme.selectedLineIdx
+    const idx = gMeme.selectedLineIdx
 
-    gMeme.lines[idx -1].txt = text
+    gMeme.lines[idx - 1].txt = text
 }
 
 function setStrokeColor(color) {
-    gTextSettings.stroke = color
+    const idx = gMeme.selectedLineIdx
+
+    gMeme.lines[idx - 1].stroke = color
+    // gTextSettings.stroke = color
 }
 
 function setFillColor(color) {
-    gTextSettings.color = color
+    const idx = gMeme.selectedLineIdx
+
+    gMeme.lines[idx - 1].color = color
+    // gTextSettings.color = color
 }
 
 function increaseFontSize() {
-    if (gTextSettings.size >= 40) {
+    const idx = gMeme.selectedLineIdx
+
+    if (gMeme.lines[idx - 1].size >= 40) {
         return
     }
-    gTextSettings.size += 5
+    gMeme.lines[idx - 1].size += 2
 }
 
 function decreaseFontSize() {
-    if (gTextSettings.size <= 25) {
+    const idx = gMeme.selectedLineIdx
+
+    if (gMeme.lines[idx - 1].size <= 25) {
         return
     }
 
-    gTextSettings.size -= 5
+    gMeme.lines[idx - 1].size -= 2
 }
 
 function addLine() {
-    gMeme.lines.push({ txt: 'Enter Text', idx: `${gMeme.lines.length + 1}` })
+    // gMeme.lines.push({ txt: 'Enter Text', idx: `${gMeme.lines.length + 1}` })
+    const y = gMeme.lines[gMeme.lines.length - 1].pos.y + 50
+
+    gMeme.lines.push({ txt: 'Enter Text', size: 20, stroke: 'red', color: 'black', align: 'center', idx: `${gMeme.lines.length + 1}`, pos: { x: 200, y }, isDrag: false })
 }
 
 
@@ -88,8 +104,3 @@ function switchSelectedLine() {
     }
 
 }
-
-// function getLineByIdx(index) {
-//     const line = gMeme.lines.find(line => line.idx === index)
-//     return line
-// }
