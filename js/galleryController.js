@@ -1,9 +1,9 @@
 'use strict'
 
 var gImgs = [
-    { id: 1, url: '../assets/images/1.jpg', keywords: ['funny', 'trump'] },
-    { id: 2, url: '../assets/images/2.jpg', keywords: ['dog', 'cute'] },
-    { id: 3, url: '../assets/images/3.jpg', keywords: ['baby', 'cute'] },
+    { id: 1, url: 'assets/images/1.jpg', keywords: ['funny', 'trump'] },
+    { id: 2, url: 'assets/images/2.jpg', keywords: ['dog', 'cute'] },
+    { id: 3, url: 'assets/images/3.jpg', keywords: ['baby', 'cute'] },
 ]
 
 var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
