@@ -13,7 +13,7 @@
 <body onload="onInit()">
 
     <header class="main-header">
-        <span class="logo">logo here</span>
+        <span class="logo">logo</span>
         <ul class="header-links">
             <li><a href=#>Gallery</a></li>
             <li><a href=#>Memes</a></li>
@@ -21,30 +21,118 @@
         </ul>
     </header>
 
-    <div class="gallery-container">
-    </div>
+    <section class="gallery-view">
+        <div class="search-bar">
+            <input type="text" placeholder="Search">
+        </div>
+
+        <div class="gallery-container">
+        </div>
+    </section>
+
 
 
     <section class="meme-editor hide">
-        <button onclick="backToGallery()"> back to gallery </button>
-        <div class="canvas-container">
-            <canvas class="main-canvas" height="400" width="400"></canvas>
+        <div class="meme-display">
+
+            <button class="gallery-btn" onclick="backToGallery()"><i class="fa-solid fa-chevron-left"></i> Back to
+                Gallery </button>
+
+            <div class="canvas-container">
+                <canvas class="main-canvas"></canvas>
+            </div>
         </div>
-        <input id="fill-color" type="color" onchange="onFillColorChange(this.value)">
-        <input id="stroke-color" type="color" onchange="onStrokeColorChange(this.value)">
-        <button class="increase-font" onclick="onIncreaseFont(event)">+</button>
-        <button class="decrease-font" onclick="onDecreaseFont(event)">-</button>
-        <button class="add-line" onclick="onAddLine(event)">Add Line</button>
 
-        <a href="#" onclick="onDownloadCanvas(this)">Download</a>
+        <div class="editor-controllers">
 
-        <section class="lines-container">
-            <input class="text-input" type="text" autofocus oninput="onTxtInput(this)" data-idx=1 placeholder="Enter text here">
+            <h2 class="editor-title">Edit Text Lines</h2>
+
+            <section class="line-controls">
+                <span class="curr-line">1</span><span>/</span><span class="total-lines">2</span>
+
+                <button class="switch-lines font-btn" onclick="onSwitchLine(event)">
+                    <i class="fa-solid fa-arrow-right-arrow-left"></i>
+                </button>
+    
+                <button class="add-line font-btn" onclick="onAddLine(event)">
+                    <i class="fa-solid fa-plus"></i>
+                </button>
+    
+                <button class="remove-line font-btn" onclick="onRemoveLine(event)">
+                    <i class="fa-regular fa-trash-can"></i>            
+                </button>
+            </section>
+
+            <section class="text-editor">
+                <select class="font-select">
+                    <option value="default">Choose Font</option>
+                </select>
+
+                <button class="increase-font font-btn" onclick="onIncreaseFont(event)">
+                    <i class="fa-solid fa-font"></i>+
+                </button>
+
+                <button class="decrease-font font-btn" onclick="onDecreaseFont(event)">
+                    <i class="fa-solid fa-font"></i>-
+                </button>
+
+                <span>|</span>
+
+                <button class="align-left font-btn" value="left" onclick="onAlignText()">
+                    <i class="fa-solid fa-align-left"></i>
+                </button>
+
+                <button class="align-center font-btn" value="center" onclick="onAlignText()">
+                    <i class="fa-solid fa-align-center"></i>
+                </button>
+
+                <button class="align-right font-btn" value="right" onclick="onAlignText()">
+                    <i class="fa-solid fa-align-right"></i>
+                </button>
+
+                <span>|</span>
+
+                <button>
+                    <label for="fill-color">
+                        <i class="fa-solid fa-fill-drip font-btn" aria-hidden="true"></i>
+                    </label>
+                    <input id="fill-color" class="color-input" type="color"
+                        onchange="onFillColorChange(this.value)">
+                </button>
+
+                <button>
+                    <label for="stroke-color">
+                        <i class="fa-solid fa-paintbrush font-btn"></i>
+                    </label>
+                    <input id="stroke-color" class="color-input" type="color"
+                        onchange="onStrokeColorChange(this.value)">
+                </button>
+
+                <section class="lines-container">
+                    <input class="text-input" type="text" autofocus oninput="onTxtInput(this)" data-idx=1
+                        placeholder="Enter text here">
+                </section>
+                
+                <a href="#" onclick="onDownloadCanvas(this)">Download</a>
+        </div>
+
+        <section class="imojis">
+            <img src="assets/imogis/1.png" alt="" onclick="onAddImogi(this)">
+            <img src="assets/imogis/2.png" alt="" onclick="onAddImogi(this)">
+            <img src="assets/imogis/3.png" alt="" onclick="onAddImogi(this)">
+            <img src="assets/imogis/4.png" alt="" onclick="onAddImogi(this)">
+            <img src="assets/imogis/5.png" alt="" onclick="onAddImogi(this)">
+            <img src="assets/imogis/6.png" alt="" onclick="onAddImogi(this)">
+            <img src="assets/imogis/7.png" alt="" onclick="onAddImogi(this)">
+            <img src="assets/imogis/8.png" alt="" onclick="onAddImogi(this)">
+            <img src="assets/imogis/9.png" alt="" onclick="onAddImogi(this)">
+            <img src="assets/imogis/10.png" alt="" onclick="onAddImogi(this)">
+            <img src="assets/imogis/11.png" alt="" onclick="onAddImogi(this)">
+            <img src="assets/imogis/12.png" alt="" onclick="onAddImogi(this)">
         </section>
 
-        <button class="switch-lines" onclick="onSwitchLine(event)">Switch Lines</button>
     </section>
-
+        
     <script src="js/services/meme-service.js"></script>
     <script src="js/galleryController.js"></script>
     <script src="js/memeController.js"></script>

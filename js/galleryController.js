@@ -51,7 +51,6 @@ function addListeners() {
     //     resizeCanvas()
 
     //     const center = { x: gElCanvas.width / 2, y: gElCanvas.height / 2 }
-    //     createLine(center)
 
     //     renderMeme()
     // })

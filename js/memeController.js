@@ -27,7 +27,7 @@ function onTxtInput(elInput) {
 
 function coverCanvasWithImg(elImg) {
     const elEditor = document.querySelector('.meme-editor')
-    const elGallery = document.querySelector('.gallery-container')
+    const elGallery = document.querySelector('.gallery-view')
 
     gElCanvas.height = (elImg.naturalHeight / elImg.naturalWidth) * gElCanvas.width
     gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
@@ -47,6 +47,8 @@ function getElImg() {
 function onDownloadCanvas(elLink) {
     const currMeme = getMeme()
 
+    renderMeme()
+
     elLink.href = '#'
     const dataUrl = gElCanvas.toDataURL()
 
@@ -60,9 +62,12 @@ function backToGallery() {
 
     elEditor.classList.add('hide')
     elGallery.classList.remove('hide')
+
+    location.reload()
 }
 
 function onFillColorChange(color) {
+    console.log('hi:')
     setFillColor(color)
     renderMeme()
     drawFrame()
@@ -93,7 +98,7 @@ function onDecreaseFont(ev) {
 }
 
 function onAddLine(ev) {
-    ev.preventDefault()
+    // ev.preventDefault()
 
     addLine()
 
@@ -116,6 +121,12 @@ function drawText(text, lineIdx) {
     currMeme = getMeme()
 
     const currLine = currMeme.lines[lineIdx - 1]
+
+    if (currLine.isImogi) {
+        onAddImogi(currLine.img)
+        return
+    }
+    
     const pos = currLine.pos
 
     gCtx.font = `${currLine.size}px ${currLine.font}`
@@ -186,4 +197,9 @@ function setCurrLineInput() {
     const elInput = document.querySelector('.text-input')
 
     elInput.value = currLine.txt
+}
+
+function onAddImogi(elImg) {
+    addImogi(elImg)
+    gCtx.drawImage(elImg, 0, 0, 50, 50)
 }
