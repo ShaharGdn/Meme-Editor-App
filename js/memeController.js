@@ -169,7 +169,7 @@ function drawFrame() {
     // drawRect(x -10 , y, textWidth +20 , textHeight +10)
     const { x, y } = calculateRectPosition(currLine.pos.x, currLine.pos.y, textWidth, currLine.size, gCtx.textAlign)
 
-    drawRect(x -10 , y, textWidth +20 , textHeight +10)
+    drawRect(x - 10, y, textWidth + 20, textHeight + 10)
 
     gCtx.restore()
 }
@@ -221,7 +221,7 @@ function onDown(ev) {
 
     if (isTextClicked(gStartPos)) {
         setTextDrag(true)
-    } else if(isImogiClicked(gStartPos)){
+    } else if (isImogiClicked(gStartPos)) {
         setImogiDrag(true)
     }
 
@@ -242,7 +242,7 @@ function onMove(ev) {
 
         const dx = pos.x - gStartPos.x
         const dy = pos.y - gStartPos.y
-  
+
         moveImogi(dx, dy)
 
         gStartPos = pos
@@ -263,7 +263,7 @@ function onMove(ev) {
     const dy = pos.y - gStartPos.y
 
     moveText(dx, dy)
-    
+
     gStartPos = pos
 
     renderMeme()
@@ -272,7 +272,7 @@ function onMove(ev) {
 
 function onUp() {
     setTextDrag(false)
-    
+
     document.body.style.cursor = 'grab'
 
     if (currMeme.selectedImogiIdx != 0) {
@@ -281,25 +281,44 @@ function onUp() {
     }
 }
 
+// function getEvPos(ev) {
+//     if (TOUCH_EVENTS.includes(ev.type)) {
+
+//         ev.preventDefault()
+//         ev = ev.changedTouches[0]
+
+//         return {
+//             x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
+//             y: ev.pageY - ev.target.offsetTop - ev.target.clientTop,
+//         }
+
+//     } else {
+//         return {
+//             x: ev.offsetX,
+//             y: ev.offsetY,
+//         }
+//     }
+// }
+
 function getEvPos(ev) {
     if (TOUCH_EVENTS.includes(ev.type)) {
-        console.log('ev.type:', ev.type)
-
         ev.preventDefault()
         ev = ev.changedTouches[0]
 
-        return {
-            x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
-            y: ev.pageY - ev.target.offsetTop - ev.target.clientTop,
-        }
+        const rect = ev.target.getBoundingClientRect()
 
+        return {
+            x: ev.pageX - rect.left,
+            y: ev.pageY - rect.top
+        }
     } else {
         return {
             x: ev.offsetX,
-            y: ev.offsetY,
+            y: ev.offsetY
         }
     }
 }
+
 
 function isTextClicked(clickedPos) {
     const currMeme = getMeme()
