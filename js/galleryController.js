@@ -35,7 +35,10 @@ function renderImages() {
 
 function onImgSelect(elImg) {
     const imgId = elImg.dataset.id
+    const elBody = document.querySelector('body')
     // setImg(imgId)
+
+    elBody.classList.remove('gallery')
 
     createMeme(imgId)
 
@@ -67,4 +70,3 @@ function addTouchListeners() {
     gElCanvas.addEventListener('touchmove', onMove)
     gElCanvas.addEventListener('touchend', onUp)
 }
-

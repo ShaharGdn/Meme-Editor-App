@@ -81,6 +81,20 @@ function switchSelectedLine() {
     return
 }
 
+function shiftSelectedLine(dir) {
+    gMeme.selectedLineIdx += dir
+
+    if (gMeme.selectedLineIdx > gMeme.lines.length) {
+        gMeme.selectedLineIdx = 1
+    } else if (gMeme.selectedLineIdx <= 0) {
+        gMeme.selectedLineIdx = gMeme.lines.length;
+    }
+
+    renderMeme()
+    drawFrame()
+}
+
+
 function addImogi(elImg) {
     gMeme.imogis.push({ idx: `${gMeme.imogis.length + 1}`, pos: { x: 0, y: 0 }, size: 50, isDrag: false, img: elImg })
 }

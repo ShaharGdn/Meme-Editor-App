@@ -59,9 +59,11 @@ function onDownloadCanvas(elLink) {
 function backToGallery() {
     const elEditor = document.querySelector('.meme-editor')
     const elGallery = document.querySelector('.gallery-container')
+    const elBody = document.querySelector('body')
 
     elEditor.classList.add('hide')
     elGallery.classList.remove('hide')
+    elBody.classList.add('gallery')
 
     location.reload()
 }
@@ -109,6 +111,14 @@ function onSwitchLine(ev) {
     ev.preventDefault()
 
     switchSelectedLine()
+
+    drawFrame()
+
+    setCurrLineInput()
+}
+
+function onShiftLine(dir) {
+    shiftSelectedLine(dir)
 
     drawFrame()
 

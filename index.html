@@ -10,12 +10,12 @@
     <script src="https://kit.fontawesome.com/c705052b04.js" crossorigin="anonymous"></script>
 </head>
 
-<body onload="onInit()">
+<body onload="onInit()" class="gallery">
 
     <header class="main-header">
-        <span class="logo">logo</span>
+        <img class="logo" src="assets/logo/Memegen.png" onclick="backToGallery()">
         <ul class="header-links">
-            <li><a href=#>Gallery</a></li>
+            <li><a class="gallery-link" href=# onclick="backToGallery()">Gallery</a></li>
             <li><a href=#>Memes</a></li>
             <li><a href=#>About</a></li>
         </ul>
@@ -49,16 +49,24 @@
             <section class="line-controls">
                 <span class="curr-line">1</span><span>/</span><span class="total-lines">2</span>
 
+                <button class="line-up font-btn" onclick="onShiftLine(-1)">
+                    <i class="fa-solid fa-arrow-up-long"></i>
+                </button>
+
+                <button class="line-down font-btn" onclick="onShiftLine(1)">
+                    <i class="fa-solid fa-arrow-down-long"></i>
+                </button>
+
                 <button class="switch-lines font-btn" onclick="onSwitchLine(event)">
                     <i class="fa-solid fa-arrow-right-arrow-left"></i>
                 </button>
-    
+
                 <button class="add-line font-btn" onclick="onAddLine(event)">
                     <i class="fa-solid fa-plus"></i>
                 </button>
-    
+
                 <button class="remove-line font-btn" onclick="onRemoveLine(event)">
-                    <i class="fa-regular fa-trash-can"></i>            
+                    <i class="fa-regular fa-trash-can"></i>
                 </button>
             </section>
 
@@ -99,8 +107,7 @@
                     <label for="fill-color">
                         <i class="fa-solid fa-fill-drip font-btn" aria-hidden="true"></i>
                     </label>
-                    <input id="fill-color" class="color-input" type="color"
-                        onchange="onFillColorChange(this.value)">
+                    <input id="fill-color" class="color-input" type="color" onchange="onFillColorChange(this.value)">
                 </button>
 
                 <button>
@@ -115,7 +122,7 @@
                     <input class="text-input" type="text" autofocus oninput="onTxtInput(this)" data-idx=1
                         placeholder="Enter text here">
                 </section>
-                
+
                 <a href="#" onclick="onDownloadCanvas(this)">Download</a>
         </div>
 
@@ -135,7 +142,7 @@
         </section>
 
     </section>
-        
+
     <script src="js/services/meme-service.js"></script>
     <script src="js/galleryController.js"></script>
     <script src="js/memeController.js"></script>

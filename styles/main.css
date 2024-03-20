@@ -6,7 +6,11 @@
 
 body {
     background-color: #f0eded;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: 'Roboto, sans-serif';
+}
+
+body.gallery .gallery-link{
+    color: rgb(255, 170, 0);
 }
 
 .gallery-container {
@@ -44,11 +48,12 @@ img.gallery-img {
     z-index: 2;
 }
 
-.logo {
+img.logo {
     padding: 0.5em;
     align-self: center;
     width: max-content;
     margin-inline-start: 1em;
+    height: 50px;
 }
 
 ul {
@@ -66,7 +71,7 @@ ul>* {
 li>a {
     text-decoration: none;
     color: rgb(129, 127, 127);
-    font-size: 0.9em;
+    font-size: 1em;
     margin-inline-end: 1.5em;
 }
 
