@@ -128,12 +128,14 @@ function onShiftLine(dir) {
 function drawText(text, lineIdx) {
     currMeme = getMeme()
 
+    if(!currMeme.lines.length) return
+
+
     const currLine = currMeme.lines[lineIdx - 1]
 
 
     const pos = currLine.pos
 
-    // gCtx.font = `${currLine.size}px Arial`
     gCtx.font = `${currLine.size}px ${currLine.font}`
 
     const textMetrics = gCtx.measureText(text)
@@ -153,6 +155,10 @@ function drawText(text, lineIdx) {
 
 function drawFrame() {
     const currMeme = getMeme()
+
+    if(!currMeme.lines.length) return
+
+
     const currLine = currMeme.lines[currMeme.selectedLineIdx - 1]
 
     gCtx.save()
@@ -164,9 +170,6 @@ function drawFrame() {
     const textWidth = textMetrics.width
     const textHeight = currLine.size
 
-    // const { x, y } = currLine.pos
-
-    // drawRect(x -10 , y, textWidth +20 , textHeight +10)
     const { x, y } = calculateRectPosition(currLine.pos.x, currLine.pos.y, textWidth, currLine.size, gCtx.textAlign)
 
     drawRect(x - 10, y, textWidth + 20, textHeight + 10)
@@ -192,8 +195,11 @@ function calculateRectPosition(x, y, textWidth, textSize, textAlign) {
     return { x: rectX, y: rectY }
 }
 
-function setCurrLineInput() {
+function setCurrLineInput() {  
     currMeme = getMeme()
+
+    if(!currMeme.lines.length) return
+
     const currLineIdx = currMeme.selectedLineIdx
     const currLine = currMeme.lines[currLineIdx - 1]
 
@@ -319,7 +325,6 @@ function getEvPos(ev) {
     }
 }
 
-
 function isTextClicked(clickedPos) {
     const currMeme = getMeme()
     const offsetX = clickedPos.x
@@ -382,6 +387,12 @@ function onAlignText(dir) {
 
 function onChangeFont(font) {
     setFont(font)
+    renderMeme()
+    drawFrame()
+}
+
+function onRemoveLine() {
+    removeLine()
     renderMeme()
     drawFrame()
 }

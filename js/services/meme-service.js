@@ -60,10 +60,15 @@ function decreaseFontSize() {
 }
 
 function addLine() {
+
+    if(!currMeme.lines.length) {
+        gMeme.lines.push({ txt: 'Enter Text', size: 20, stroke: 'white', color: 'white', align: 'left', idx: 1, pos: { x: 50, y:50 }, isDrag: false , font: 'Impact'})
+        gMeme.selectedLineIdx = gMeme.lines.length
+        return
+    }
+
     const y = gMeme.lines[gMeme.lines.length - 1].pos.y + 50
-
     gMeme.lines.push({ txt: 'Enter Text', size: 20, stroke: 'white', color: 'white', align: 'left', idx: `${gMeme.lines.length + 1}`, pos: { x: 50, y }, isDrag: false , font: 'Impact'})
-
     gMeme.selectedLineIdx = gMeme.lines.length
 }
 
@@ -79,6 +84,19 @@ function switchSelectedLine() {
     drawFrame()
 
     return
+}
+
+function shiftSelectedLine(dir) {
+    gMeme.selectedLineIdx += dir;
+
+    if (gMeme.selectedLineIdx > gMeme.lines.length) {
+        gMeme.selectedLineIdx = 1
+    } else if (gMeme.selectedLineIdx <= 0) {
+        gMeme.selectedLineIdx = gMeme.lines.length
+    }
+
+    renderMeme()
+    drawFrame()
 }
 
 function addImogi(elImg) {
@@ -109,4 +127,9 @@ function alignText(dir) {
 
 function setFont(fontFamily) {
     gMeme.lines[gMeme.selectedLineIdx - 1].font = fontFamily
+}
+
+function removeLine() {
+    gMeme.lines.splice(gMeme.selectedLineIdx -1, 1)
+    gMeme.selectedLineIdx--
 }
