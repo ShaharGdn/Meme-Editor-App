@@ -115,7 +115,6 @@ function onSwitchLine(ev) {
     setCurrLineInput()
 }
 
-
 function drawText(text, lineIdx) {
     currMeme = getMeme()
 
@@ -124,6 +123,7 @@ function drawText(text, lineIdx) {
 
     const pos = currLine.pos
 
+    // gCtx.font = `${currLine.size}px Arial`
     gCtx.font = `${currLine.size}px ${currLine.font}`
 
     const textMetrics = gCtx.measureText(text)
@@ -154,6 +154,9 @@ function drawFrame() {
     const textWidth = textMetrics.width
     const textHeight = currLine.size
 
+    // const { x, y } = currLine.pos
+
+    // drawRect(x -10 , y, textWidth +20 , textHeight +10)
     const { x, y } = calculateRectPosition(currLine.pos.x, currLine.pos.y, textWidth, currLine.size, gCtx.textAlign)
 
     drawRect(x -10 , y, textWidth +20 , textHeight +10)
@@ -179,7 +182,6 @@ function calculateRectPosition(x, y, textWidth, textSize, textAlign) {
     return { x: rectX, y: rectY }
 }
 
-
 function setCurrLineInput() {
     currMeme = getMeme()
     const currLineIdx = currMeme.selectedLineIdx
@@ -201,7 +203,6 @@ function drawImogis() {
         gCtx.drawImage(imogi.img, imogi.pos.x, imogi.pos.y, imogi.size, imogi.size)
     })
 }
-
 
 function onDown(ev) {
     gStartPos = getEvPos(ev)
@@ -343,6 +344,12 @@ function isImogiClicked(clickedPos) {
 
 function onAlignText(dir) {
     alignText(dir)
+    renderMeme()
+    drawFrame()
+}
+
+function onChangeFont(font) {
+    setFont(font)
     renderMeme()
     drawFrame()
 }

@@ -31,7 +31,6 @@
     </section>
 
 
-
     <section class="meme-editor hide">
         <div class="meme-display">
 
@@ -64,8 +63,12 @@
             </section>
 
             <section class="text-editor">
-                <select class="font-select">
-                    <option value="default">Choose Font</option>
+                <select class="font-select" onchange="onChangeFont(this.value)">
+                    <option value="Impact">Impact</option>
+                    <option value="Arial">Arial</option>
+                    <option value="Comic Sans MS">Comic Sans MS</option>
+                    <option value="Helvetica">Helvetica</option>
+                    <option value="Roboto">Roboto</option>
                 </select>
 
                 <button class="increase-font font-btn" onclick="onIncreaseFont(event)">

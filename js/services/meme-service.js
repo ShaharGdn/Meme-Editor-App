@@ -8,7 +8,7 @@ function createMeme(imgId) {
         selectedLineIdx: 1,
         selectedImogiIdx: 0,
         lines: [
-            { txt: 'I sometimes eat Falafel', size: 30, stroke: 'white', color: 'white', align: 'left', idx: 1, pos: { x: 50, y: 50 }, isDrag: false },
+            { txt: 'Enter Text', size: 30, stroke: 'white', color: 'white', align: 'left', idx: 1, pos: { x: 50, y: 50 }, isDrag: false , font: 'Impact'},
         ],
         imogis: []
     }
@@ -62,7 +62,7 @@ function decreaseFontSize() {
 function addLine() {
     const y = gMeme.lines[gMeme.lines.length - 1].pos.y + 50
 
-    gMeme.lines.push({ txt: 'Enter Text', size: 20, stroke: 'white', color: 'white', align: 'left', idx: `${gMeme.lines.length + 1}`, pos: { x: 50, y }, isDrag: false })
+    gMeme.lines.push({ txt: 'Enter Text', size: 20, stroke: 'white', color: 'white', align: 'left', idx: `${gMeme.lines.length + 1}`, pos: { x: 50, y }, isDrag: false , font: 'Impact'})
 
     gMeme.selectedLineIdx = gMeme.lines.length
 }
@@ -105,4 +105,8 @@ function moveImogi(dx, dy) {
 
 function alignText(dir) {
     gMeme.lines[gMeme.selectedLineIdx - 1].align = dir
+}
+
+function setFont(fontFamily) {
+    gMeme.lines[gMeme.selectedLineIdx - 1].font = fontFamily
 }
