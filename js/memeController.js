@@ -248,7 +248,7 @@ function onMove(ev) {
         gStartPos = pos
 
         renderMeme()
-        drawFrame()
+
 
         return
     }
@@ -320,6 +320,8 @@ function isTextClicked(clickedPos) {
 
     if (line) {
         currMeme.selectedLineIdx = line.idx
+        renderMeme()
+        drawFrame()
         return true
     } else {
         renderMeme()
@@ -345,6 +347,7 @@ function isImogiClicked(clickedPos) {
 
     if (imogi) {
         currMeme.selectedImogiIdx = imogi.idx
+        renderMeme()
         return true
     } else {
         renderMeme()
