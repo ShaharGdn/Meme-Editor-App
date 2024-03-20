@@ -6,10 +6,11 @@ function createMeme(imgId) {
     gMeme = {
         selectedImgId: imgId,
         selectedLineIdx: 1,
+        selectedImogiIdx: 0,
         lines: [
             { txt: 'I sometimes eat Falafel', size: 30, stroke: 'white', color: 'white', align: 'left', idx: 1, pos: { x: 50, y: 50 }, isDrag: false },
         ],
-        imogis: {}
+        imogis: []
     }
 
     return gMeme
@@ -83,5 +84,5 @@ function switchSelectedLine() {
 
 
 function addImogi(elImg) {
-    // gMeme.lines.push({ idx: `${gMeme.lines.length + 1}`, pos: { x: 0, y: 0 }, isDrag: false , isImogi: true, img: elImg})
+    gMeme.imogis.push({ idx: `${gMeme.imogis.length + 1}`, pos: { x: 0, y: 0 }, size:50, isDrag: false, img: elImg})
 }
