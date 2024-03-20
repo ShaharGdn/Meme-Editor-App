@@ -104,6 +104,8 @@ function addImogi(elImg) {
 }
 
 function setTextDrag(isDrag) {
+    if (!gMeme.lines.length) return
+
     gMeme.lines[gMeme.selectedLineIdx - 1].isDrag = isDrag
 }
 

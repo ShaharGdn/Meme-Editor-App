@@ -259,6 +259,8 @@ function onMove(ev) {
         return
     }
 
+    if (!currMeme.lines.length) return
+
     const { isDrag } = currLine
 
     if (!isDrag) return
