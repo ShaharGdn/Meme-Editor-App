@@ -262,9 +262,8 @@ function onMove(ev) {
     const dx = pos.x - gStartPos.x
     const dy = pos.y - gStartPos.y
 
-    if(isDrag) {
-        moveText(dx, dy)
-    } 
+    moveText(dx, dy)
+    
     gStartPos = pos
 
     renderMeme()
@@ -284,6 +283,7 @@ function onUp() {
 
 function getEvPos(ev) {
     if (TOUCH_EVENTS.includes(ev.type)) {
+        console.log('ev.type:', ev.type)
 
         ev.preventDefault()
         ev = ev.changedTouches[0]
