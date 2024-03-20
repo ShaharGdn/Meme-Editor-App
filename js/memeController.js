@@ -121,6 +121,7 @@ function drawText(text, lineIdx) {
 
     const currLine = currMeme.lines[lineIdx - 1]
 
+
     const pos = currLine.pos
 
     gCtx.font = `${currLine.size}px ${currLine.font}`
@@ -340,30 +341,8 @@ function isImogiClicked(clickedPos) {
     }
 }
 
-function setTextDrag(isDrag) {
-    const currMeme = getMeme()
-
-    currMeme.lines[currMeme.selectedLineIdx - 1].isDrag = isDrag
+function onAlignText(dir) {
+    alignText(dir)
+    renderMeme()
+    drawFrame()
 }
-
-function setImogiDrag(isDrag) {
-    const currMeme = getMeme()
-
-    currMeme.imogis[currMeme.selectedImogiIdx -1].isDrag = isDrag
-
-}
-
-function moveText(dx, dy) {
-    const currMeme = getMeme()
-
-    currMeme.lines[currMeme.selectedLineIdx - 1].pos.x += dx
-    currMeme.lines[currMeme.selectedLineIdx - 1].pos.y += dy
-}
-
-function moveImogi(dx, dy) {
-    const currMeme = getMeme()
-
-    currMeme.imogis[currMeme.selectedImogiIdx - 1].pos.x += dx
-    currMeme.imogis[currMeme.selectedImogiIdx - 1].pos.y += dy
-}
-

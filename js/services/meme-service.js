@@ -67,7 +67,6 @@ function addLine() {
     gMeme.selectedLineIdx = gMeme.lines.length
 }
 
-
 function switchSelectedLine() {
     if (gMeme.selectedLineIdx >= gMeme.lines.length) {
         gMeme.selectedLineIdx = 1
@@ -82,7 +81,28 @@ function switchSelectedLine() {
     return
 }
 
-
 function addImogi(elImg) {
-    gMeme.imogis.push({ idx: `${gMeme.imogis.length + 1}`, pos: { x: 0, y: 0 }, size:50, isDrag: false, img: elImg})
+    gMeme.imogis.push({ idx: `${gMeme.imogis.length + 1}`, pos: { x: 0, y: 0 }, size: 50, isDrag: false, img: elImg })
+}
+
+function setTextDrag(isDrag) {
+    gMeme.lines[gMeme.selectedLineIdx - 1].isDrag = isDrag
+}
+
+function setImogiDrag(isDrag) {
+    gMeme.imogis[gMeme.selectedImogiIdx - 1].isDrag = isDrag
+}
+
+function moveText(dx, dy) {
+    gMeme.lines[gMeme.selectedLineIdx - 1].pos.x += dx
+    gMeme.lines[gMeme.selectedLineIdx - 1].pos.y += dy
+}
+
+function moveImogi(dx, dy) {
+    gMeme.imogis[gMeme.selectedImogiIdx - 1].pos.x += dx
+    gMeme.imogis[gMeme.selectedImogiIdx - 1].pos.y += dy
+}
+
+function alignText(dir) {
+    gMeme.lines[gMeme.selectedLineIdx - 1].align = dir
 }
