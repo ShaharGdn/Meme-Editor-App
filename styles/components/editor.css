@@ -1,0 +1,124 @@
+* {
+    box-sizing: border-box;
+}
+
+.meme-editor {
+    display: grid;
+    margin-block-start: 5em;
+    grid-template-columns: 2fr 1fr;
+}
+
+.gallery-btn {
+    border: none;
+    background: none;
+    color: rgb(164, 164, 164);
+}
+
+.meme-display {
+    grid-column: 1;
+    position: absolute;
+    justify-content: center;
+    background-color: #fff;
+    height: 100vh;
+    min-width: 60%;
+    top: 4em;
+    left: 0;
+}
+
+.editor-controllers {
+    grid-column: 2;
+}
+
+.search-bar {
+    position: relative;
+    display: block;
+    top: 8vh;
+}
+
+.search-bar input {
+    width: calc(100vw - 3em);
+    margin-inline-start: 1em;
+    border: none;
+    border-radius: 3em;
+    height: 2em;
+    text-indent: 1em;
+    font-style: italic;
+}
+
+.main-canvas {
+    border: none;
+    border-radius: 1em;
+    background-color: none;
+    margin-inline-start: 3em;
+    margin-block-start: 5em;
+}
+
+.color-input {
+    Opacity: 0;
+    Bottom: -3px;
+    Left: 0;
+    appearance: none;
+    inline-size: 0px;
+    block-size: 0px;
+    border-image: initial;
+    padding: 0px;
+}
+
+.fa-solid.fa-plus {
+    border: 1px solid black;
+    border-radius: 0.01em;
+}
+
+.fa-arrow-right-arrow-left {
+    transform: rotate(90deg);
+}
+
+.text-editor {
+    background-color: #fff;
+    padding: 1em;
+    width: max-content;
+    border-radius: 1em;
+}
+
+.lines-container {
+    border-top: 0.5px solid black;
+    margin-top: 0.5em;
+}
+
+.text-input {
+    border: none;
+    padding: 1.5em;
+    width: 100%;
+    font-size: large;
+}
+
+input {
+    caret-color: rgb(136, 0, 255);
+}
+
+input:focus {
+    outline: none;
+}
+
+.font-btn {
+    border: none;
+    background: none;
+    color: rgb(97, 97, 97);
+}
+
+.imojis {
+    display: grid;
+    grid-column: 2;
+    grid-auto-flow: row;
+    grid-template-columns: 50px 50px 50px 50px 50px 50px;
+    column-gap: 0.9em;
+    background-color: #fff;
+    width: max-content;
+    padding: 0.5em;
+    margin-top: 1em;
+    border-radius: 1em;
+}
+
+.imojis > *:hover {
+    cursor: pointer;
+}
