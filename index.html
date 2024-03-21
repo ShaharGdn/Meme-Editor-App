@@ -7,18 +7,25 @@
     <title>image gallery</title>
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/helpers.css">
+    <link rel="stylesheet" href="styles/setup/mq.css">
     <script src="https://kit.fontawesome.com/c705052b04.js" crossorigin="anonymous"></script>
 </head>
 
 <body onload="onInit()" class="gallery">
 
+    <div class="main-screen" onclick="toggleMenu()"></div>
+
     <header class="main-header">
         <img class="logo" src="assets/logo/Memegen.png" onclick="backToGallery()">
-        <ul class="header-links">
-            <li><a class="gallery-link" href=# onclick="backToGallery()">Gallery</a></li>
-            <li><a href=#>Memes</a></li>
-            <li><a href=#>About</a></li>
-        </ul>
+        <section class="main-nav">
+            <button class="exit-menu-btn" type="button" onclick="toggleMenu()">X</button>
+            <ul class="header-links">
+                <li><a class="gallery-link" href=# onclick="backToGallery()">Gallery</a></li>
+                <li><a href=#>Memes</a></li>
+                <li><a href=#>About</a></li>
+            </ul>
+        </section>
+        <button class="toggle-menu-btn" type="button" onclick="toggleMenu()">☰</button>
     </header>
 
     <section class="gallery-view">
@@ -32,13 +39,11 @@
 
 
     <section class="meme-editor hide">
-        <div class="meme-display">
+        <button class="gallery-btn" onclick="backToGallery()"><i class="fa-solid fa-chevron-left"></i> Back to
+            Gallery </button>
 
-            <button class="gallery-btn" onclick="backToGallery()"><i class="fa-solid fa-chevron-left"></i> Back to Gallery </button>
-
-            <canvas class="main-canvas"></canvas>
-            <div class="canvas-container">
-            </div>
+        <div class="canvas-display">
+            <canvas class="main-canvas" width="400" height="400"></canvas>
         </div>
 
         <div class="editor-controllers">
@@ -122,7 +127,9 @@
                         placeholder="Enter text here">
                 </section>
 
-                <a href="#" onclick="onDownloadCanvas(this)">Download</a>
+                <a href="#" onclick="onDownloadCanvas(this)">
+                    <i class="fa-solid fa-download"></i>
+                </a>
         </div>
 
         <section class="imojis">
