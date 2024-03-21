@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/helpers.css">
     <link rel="stylesheet" href="styles/setup/mq.css">
+    <link rel="stylesheet" href="styles/setup/mq.css">
     <script src="https://kit.fontawesome.com/c705052b04.js" crossorigin="anonymous"></script>
 </head>
 
@@ -15,15 +16,21 @@
 
     <div class="main-screen" onclick="toggleMenu()"></div>
 
+    <div class="main-screen" onclick="toggleMenu()"></div>
+
     <header class="main-header">
         <img class="logo" src="assets/logo/Memegen.png" onclick="backToGallery()">
         <section class="main-nav">
             <button class="exit-menu-btn" type="button" onclick="toggleMenu()">X</button>
+            <section class="main-nav">
+            <button class="exit-menu-btn" type="button" onclick="toggleMenu()">X</button>
             <ul class="header-links">
-                <li><a class="gallery-link" href=# onclick="backToGallery()">Gallery</a></li>
-                <li><a href=#>Memes</a></li>
-                <li><a href=#>About</a></li>
-            </ul>
+                    <li><a class="gallery-link" href=# onclick="backToGallery()">Gallery</a></li>
+                    <li><a href=#>Memes</a></li>
+                    <li><a href=#>About</a></li>
+                </ul>
+        </section>
+        <button class="toggle-menu-btn" type="button" onclick="toggleMenu()">☰</button>
         </section>
         <button class="toggle-menu-btn" type="button" onclick="toggleMenu()">☰</button>
     </header>
@@ -43,7 +50,7 @@
             Gallery </button>
 
         <div class="canvas-display">
-            <canvas class="main-canvas" width="400" height="400"></canvas>
+            <canvas class="main-canvas"></canvas>
         </div>
 
         <div class="editor-controllers">

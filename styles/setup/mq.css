@@ -8,7 +8,6 @@
         background-color: #FF9826;
         border-inline-start: 1px solid #ccc;
         min-width: 200px;
-        /* max-width: 300px; */
         align-items: start;
 
         transform: translateX(100%);
@@ -102,21 +101,51 @@
 
     .canvas-display {
         display: flex;
-        margin: 0px auto;
         position: static;
         background: none;
-        max-height: 500px;
+        max-height: 300px;
         justify-content: center;
         align-items: center;
+        margin-inline-end: 3em;
+    }
+
+    .main-canvas {
+        border: none;
+        border-radius: 1em;
+        background-color: none;
+        margin-block-start: 0em;
+        margin-block-end: 2em;
     }
 
     .editor-controllers {
         background: none;
         background-color: #fff;
+        justify-content: center;
+        align-items: center;
     }
 
-    .canvas-container {
-        width: 80vw;
-      }
-}
+    .text-editor {
+        max-width: 300px;
+    }
+
+    .imojis {
+        max-width: 300px;
+        column-gap: 1px;
+    }
+
+    .imojis>* {
+        width: 30px;
+    }
+
+    .text-editor > * {
+        padding: 1px;
+        margin-bottom: 5px;
+    }
+
+    .editor-title{
+        font-size: large;
+        text-align: center;
+    }
+
     
+}

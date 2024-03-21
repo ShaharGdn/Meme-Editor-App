@@ -9,7 +9,7 @@ body {
     font-family: 'Roboto, sans-serif';
 }
 
-body.gallery .gallery-link{
+body.gallery .gallery-link {
     color: rgb(255, 170, 0);
 }
 
@@ -90,6 +90,11 @@ li>a:hover {
 
 
 /* editor */
+
+.editor-title{
+    color: rgb(66, 66, 66);
+}
+
 .meme-editor {
     display: grid;
     margin-block-start: 5em;
@@ -179,6 +184,7 @@ li>a:hover {
     padding: 1.5em;
     width: 100%;
     font-size: large;
+    color: rgb(66, 66, 66);
 }
 
 input {
@@ -208,7 +214,7 @@ input:focus {
     border-radius: 1em;
 }
 
-.imojis > *:hover {
+.imojis>*:hover {
     cursor: pointer;
 }
 
