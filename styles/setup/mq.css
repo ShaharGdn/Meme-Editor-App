@@ -75,6 +75,12 @@
         opacity: 1;
         pointer-events: auto;
     }
+
+    .gallery-btn {
+        z-index: 1;
+        margin-bottom: 4em;
+        margin-top: 0em;
+    }
 }
 
 @media(max-width: 630px) {
@@ -87,7 +93,7 @@
         max-height: 150px;
     }
 }
-/* MEDIUM */
+
 @media (min-width: 768px) {
     .toggle-menu-btn,
     .exit-menu-btn {
