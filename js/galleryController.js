@@ -23,6 +23,7 @@ var gImgs = [
     { id: 16, url: 'assets/images/16.jpg', keywords: ['baby', 'cute'] },
     { id: 17, url: 'assets/images/17.jpg', keywords: ['baby', 'cute'] },
     { id: 18, url: 'assets/images/18.jpg', keywords: ['baby', 'cute'] },
+    { id: 19, url: 'assets/images/drevil.jpg', keywords: ['baby', 'cute'] },
 ]
 
 const TOUCH_EVENTS = ['touchstart', 'touchmove', 'touchend']
@@ -35,6 +36,7 @@ function onInit() {
 
     addListeners()
 
+    resizeCanvas()
     renderImages()
 }
 
@@ -64,6 +66,12 @@ function onImgSelect(elImg) {
 function addListeners() {
     addMouseListeners()
     addTouchListeners()
+
+    window.addEventListener('resize', () => {
+        resizeCanvas()
+        renderMeme()
+        drawFrame()
+    })
 }
 
 function addMouseListeners() {

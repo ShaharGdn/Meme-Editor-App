@@ -6,6 +6,7 @@ function renderMeme() {
     const elImg = getElImg()
     currMeme = getMeme()
 
+    // resizeCanvas()
     coverCanvasWithImg(elImg)
 
     const { lines } = currMeme
@@ -289,25 +290,6 @@ function onUp() {
     }
 }
 
-// function getEvPos(ev) {
-//     if (TOUCH_EVENTS.includes(ev.type)) {
-
-//         ev.preventDefault()
-//         ev = ev.changedTouches[0]
-
-//         return {
-//             x: ev.pageX - ev.target.offsetLeft - ev.target.clientLeft,
-//             y: ev.pageY - ev.target.offsetTop - ev.target.clientTop,
-//         }
-
-//     } else {
-//         return {
-//             x: ev.offsetX,
-//             y: ev.offsetY,
-//         }
-//     }
-// }
-
 function getEvPos(ev) {
     if (TOUCH_EVENTS.includes(ev.type)) {
         ev.preventDefault()
@@ -397,4 +379,12 @@ function onRemoveLine() {
     removeLine()
     renderMeme()
     drawFrame()
+}
+
+function resizeCanvas() {
+    if (window.innerWidth <= 900){
+        return
+    }
+
+    gElCanvas.width = window.innerWidth * 0.3;
 }
