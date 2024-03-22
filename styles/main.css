@@ -108,7 +108,7 @@ li>a:hover {
     background: none;
     color: rgb(164, 164, 164);
     place-self: start;
-    font-size: 0.7em;
+    font-size: 1em;
     z-index: 2;
     margin-bottom: 2em;
 }
