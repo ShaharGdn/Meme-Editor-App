@@ -225,3 +225,15 @@ input:focus {
 .imojis>*:hover {
     cursor: pointer;
 }
+
+.download-meme {
+    border: none;
+    border-radius: 3em;
+    background-color: orange;
+    padding: 1em;
+    margin-top: 1em;
+
+    color: #fff;
+    font-size: 1em;
+    letter-spacing: 0.01em;
+}
