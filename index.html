@@ -131,10 +131,9 @@
                         placeholder="Enter text here">
                 </section>
 
-                <button class="download-meme" onclick="onDownloadCanvas(this)">
+                <!-- <button class="download-meme" onclick="onDownloadCanvas(this)">
                     Download Meme <i class="fa-solid fa-download"></i>
-
-                </button>
+                </button> -->
         </div>
 
         <section class="imojis">
@@ -152,11 +151,23 @@
             <img src="assets/imogis/12.png" onclick="onAddLine('💩')">
         </section>
 
+        <section class="download-share">
+            <button class="download-meme btn" onclick="onDownloadCanvas(this)">
+                Download <i class="fa-solid fa-download"></i>
+            </button>
+            <button class="share-meme btn" onclick="onShareCanvas()">
+                Share <i class="fa-solid fa-share-nodes"></i>
+            </button>
+            <button class="facebook-share btn" onclick="onFbShare()">
+                Facebook <i class="fa-brands fa-facebook"></i>
+            </button>
+        </section>
     </section>
 
-    <script src="js/services/meme-service.js"></script>
     <script src="js/galleryController.js"></script>
     <script src="js/memeController.js"></script>
+    <script src="js/services/meme-service.js"></script>
+    <script src="js/services/share-service.js"></script>
 </body>
 
 </html>

@@ -165,4 +165,18 @@
         font-size: large;
         text-align: center;
     }
+
+    .download-share {
+        column-gap: 0.5em;
+    }
+
+    .btn {
+        width: 8em;
+    
+        padding: 0.8em;
+        margin-top: 1em;
+        margin-left: 0;
+    
+        font-size: 0.7em;
+    }
 }

@@ -47,7 +47,7 @@ img.gallery-img {
     left: 0;
     margin: 0;
     background-color: #ffffff;
-    z-index: 2;
+    z-index: 100;
 }
 
 .main-nav {
@@ -226,14 +226,41 @@ input:focus {
     cursor: pointer;
 }
 
-.download-meme {
+.download-share {
+    display: grid;
+    grid-column: 2;
+    justify-content: space-between;
+    grid-auto-flow: column;
+    width: max-content;
+    column-gap: 1em;
+}
+
+.btn {
+    width: 7em;
+
     border: none;
     border-radius: 3em;
-    background-color: orange;
     padding: 1em;
     margin-top: 1em;
 
     color: #fff;
-    font-size: 1em;
-    letter-spacing: 0.01em;
+    font-size: 0.9em;
+    letter-spacing: 0.05em;
+    margin-left: 1em;
+}
+
+.download-meme {
+    background-color: orange;
+}
+
+.share-meme {
+    background-color: rgb(255, 217, 0);
+}
+
+.facebook-share {
+    background-color: rgb(72, 59, 246);
+}
+
+button:hover {
+    cursor: pointer;
 }
