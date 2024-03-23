@@ -43,11 +43,20 @@ function onInit() {
 function renderImages() {
     const elGallery = document.querySelector('.gallery-container')
 
+    const upladHTML = 
+    `<div class="upload-container">
+    <label for="file-upload" class="custom-file-upload">
+        <i class="fa-solid fa-upload"></i> 
+        Upload
+    </label>
+    <input id="file-upload" type="file" class="file-input btn" name="image" onchange="onImgInput(event)"accept="image/*" />            
+    </div>`
+
     var imageHTML = gImgs.map(image => {
         return `<img class='gallery-img img${image.id}' src='${image.url}' data-id='${image.id}' onclick=onImgSelect(this)>`
     })
 
-    elGallery.innerHTML = imageHTML.join('')
+    elGallery.innerHTML = upladHTML +imageHTML.join('')
 }
 
 function onImgSelect(elImg) {
@@ -88,4 +97,20 @@ function addTouchListeners() {
 
 function toggleMenu() {
     document.body.classList.toggle('menu-open');
+}
+
+function onImgInput(ev) {
+    console.log('hekki:')
+    loadImageFromInput(ev)
+}
+
+function loadImageFromInput(ev) {
+    const reader = new FileReader()
+
+    reader.onload = ev => {
+        let img = new Image()
+        img.src = ev.target.result
+        img.onload = () => coverCanvasWithImg(img)
+    }
+    reader.readAsDataURL(ev.target.files[0])
 }

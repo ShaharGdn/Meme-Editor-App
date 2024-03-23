@@ -93,12 +93,14 @@
         place-content: center;
     }
 
-    img.gallery-img {
+    img.gallery-img,
+    .upload-container {
         max-height: 150px;
     }
 }
 
 @media (min-width: 768px) {
+
     .toggle-menu-btn,
     .exit-menu-btn {
         display: none;
@@ -156,12 +158,12 @@
         width: 30px;
     }
 
-    .text-editor > * {
+    .text-editor>* {
         padding: 1px;
         margin-bottom: 5px;
     }
 
-    .editor-title{
+    .editor-title {
         font-size: large;
         text-align: center;
     }
@@ -172,11 +174,11 @@
 
     .btn {
         width: 8em;
-    
+
         padding: 0.8em;
         margin-top: 1em;
         margin-left: 0;
-    
+
         font-size: 0.7em;
     }
 }

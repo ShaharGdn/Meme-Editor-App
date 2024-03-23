@@ -264,3 +264,45 @@ input:focus {
 button:hover {
     cursor: pointer;
 }
+
+.upload-img {
+    position: relative;
+    top: 5em;
+}
+
+input[type="file"] {
+    display: none;
+  }
+  
+  .upload-container {
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr;
+    place-items: center;
+    padding: 6px 12px;
+    cursor: pointer;
+    position: relative;
+    width: 170px;
+    height: 170px;
+    border: none;
+    background-color: #fff;
+    border-radius: 1em;
+    box-shadow: 1px 1px 2px 0 #0000001f;
+    margin-inline-start: 1em;
+    border-radius: 1em;
+    cursor: pointer;
+    -webkit-user-drag: none;
+  }
+
+  .custom-file-upload {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    color: rgb(129, 127, 127);
+    text-shadow: 1px 1px 3px #00000021;  
+}
+
+
+  /* <label for="file-upload" class="custom-file-upload">
+  <i class="fa-solid fa-upload"></i> 
+  Upload
+</label>
+<input id="file-upload" type="file" class="file-input btn" name="image" onchange="onImgInput(event)"accept="image/*" /> */
