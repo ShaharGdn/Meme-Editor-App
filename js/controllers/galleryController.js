@@ -23,7 +23,26 @@ var gImgs = [
     { id: 16, url: 'assets/images/16.jpg', keywords: ['baby', 'cute'] },
     { id: 17, url: 'assets/images/17.jpg', keywords: ['baby', 'cute'] },
     { id: 18, url: 'assets/images/18.jpg', keywords: ['baby', 'cute'] },
-    { id: 19, url: 'assets/images/drevil.jpg', keywords: ['baby', 'cute'] },
+    { id: 19, url: 'assets/images/19.jpg', keywords: ['baby', 'cute'] },
+    { id: 20, url: 'assets/images/20.jpg', keywords: ['baby', 'cute'] },
+    { id: 21, url: 'assets/images/21.jpg', keywords: ['baby', 'cute'] },
+    { id: 22, url: 'assets/images/22.jpg', keywords: ['baby', 'cute'] },
+    { id: 23, url: 'assets/images/23.jpg', keywords: ['baby', 'cute'] },
+    { id: 24, url: 'assets/images/24.jpg', keywords: ['baby', 'cute'] },
+    { id: 25, url: 'assets/images/25.jpg', keywords: ['baby', 'cute'] },
+    { id: 26, url: 'assets/images/26.jpg', keywords: ['baby', 'cute'] },
+    { id: 27, url: 'assets/images/27.jpg', keywords: ['baby', 'cute'] },
+    { id: 28, url: 'assets/images/28.jpg', keywords: ['baby', 'cute'] },
+    { id: 29, url: 'assets/images/29.jpg', keywords: ['baby', 'cute'] },
+    { id: 30, url: 'assets/images/30.jpg', keywords: ['baby', 'cute'] },
+    { id: 31, url: 'assets/images/31.jpg', keywords: ['baby', 'cute'] },
+    { id: 32, url: 'assets/images/32.jpg', keywords: ['baby', 'cute'] },
+    { id: 33, url: 'assets/images/33.jpg', keywords: ['baby', 'cute'] },
+    { id: 34, url: 'assets/images/34.jpg', keywords: ['baby', 'cute'] },
+    { id: 35, url: 'assets/images/35.jpg', keywords: ['baby', 'cute'] },
+    { id: 37, url: 'assets/images/37.jpg', keywords: ['baby', 'cute'] },
+    { id: 38, url: 'assets/images/38.jpg', keywords: ['baby', 'cute'] },
+
 ]
 
 const TOUCH_EVENTS = ['touchstart', 'touchmove', 'touchend']
@@ -108,7 +127,6 @@ function loadImageFromInput(ev) {
     reader.onload = ev => {
         let img = new Image()
         img.src = ev.target.result
-        // img.onload = () => onImgSelect(img)
         img.onload = () => 
         createImg(img)
     }
