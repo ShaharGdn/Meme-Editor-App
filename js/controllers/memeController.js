@@ -48,6 +48,7 @@ function getElImg() {
 }
 
 function onDownloadCanvas(elLink) {
+    console.log('downloading:')
     const currMeme = getMeme()
 
     renderMeme()

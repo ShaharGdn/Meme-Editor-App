@@ -260,6 +260,7 @@ input:focus {
 
 .download-meme {
     background-color: orange;
+    text-align: center;
 }
 
 .share-meme {

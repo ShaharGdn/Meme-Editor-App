@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>image gallery</title>
+    <title>Meme Editor | MemeGen by Shahar Gadon</title>
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/helpers.css">
     <link rel="stylesheet" href="styles/setup/mq.css">
@@ -13,8 +13,6 @@
 </head>
 
 <body onload="onInit()" class="gallery">
-
-    <!-- <div class="main-screen" onclick="toggleMenu()"></div> -->
 
     <header class="main-header">
         <img class="logo" src="assets/logo/Memegen.png" onclick="backToGallery()">
@@ -148,9 +146,9 @@
             <button class="save-meme btn" onclick="onSaveMeme()">
                 <i class="fa-solid fa-floppy-disk"></i>
             </button>
-            <button class="download-meme btn" onclick="onDownloadCanvas(this)">
+            <a href="#" class="download-meme btn" onclick="onDownloadCanvas(this)">
                 <i class="fa-solid fa-download"></i>
-            </button>
+            </a>
             <button class="share-meme btn" onclick="onShareCanvas()">
                 <i class="fa-solid fa-share-nodes"></i>
             </button>
