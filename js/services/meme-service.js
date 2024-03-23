@@ -2,7 +2,7 @@
 
 var gMeme
 
-function createMeme(imgId) {
+function createMeme(imgId=null) {
     gMeme = {
         imgUrl: null,
         selectedImgId: imgId,
@@ -57,7 +57,6 @@ function decreaseFontSize() {
 }
 
 function addLine(txt) {
-    console.log('txt:', txt)
     if(!currMeme.lines.length) {
         gMeme.lines.push({txt, size: 35, stroke: 'white', color: 'white', align: 'center', pos: { x: 180, y:50 }, isDrag: false , font: 'Impact'})
         gMeme.selectedLineIdx = 0

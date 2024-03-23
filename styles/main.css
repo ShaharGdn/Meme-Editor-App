@@ -310,6 +310,7 @@ input[type="file"] {
 .upload-container:hover,
 .custom-file-upload:hover {
     background-color: #f2f0f0;
+    cursor: pointer;
 }
 
 .custom-file-upload {
@@ -317,4 +318,5 @@ input[type="file"] {
     font-weight: 250;
     color: rgb(129, 127, 127);
     text-shadow: 1px 1px 3px #00000021;
+    cursor: pointer;
 }

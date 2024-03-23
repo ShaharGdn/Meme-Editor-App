@@ -62,7 +62,6 @@ function renderImages() {
 function onImgSelect(elImg) {
     const imgId = elImg.dataset.id
     const elBody = document.querySelector('body')
-    // setImg(imgId)
 
     elBody.classList.remove('gallery')
 
@@ -109,7 +108,42 @@ function loadImageFromInput(ev) {
     reader.onload = ev => {
         let img = new Image()
         img.src = ev.target.result
-        img.onload = () => coverCanvasWithImg(img)
+        // img.onload = () => onImgSelect(img)
+        img.onload = () => 
+        createImg(img)
     }
     reader.readAsDataURL(ev.target.files[0])
 }
+
+function createImg(elImg) {
+    const newId = makeId()
+
+    const newImg = { id: newId, url: `${elImg.src}`, keywords: [] }
+    elImg.dataset.id = newId
+
+    gImgs.push(newImg)
+
+    gMeme = {
+        imgUrl: elImg.src,
+        selectedImgId: newId,
+        selectedLineIdx: 0,
+        lines: [
+            { txt: 'Enter Text', size: 35, stroke: 'white', color: 'white', align: 'center', pos: { x: 180, y: 50 }, isDrag: false , font: 'Impact'},
+        ]
+    }
+
+    renderImages()
+    renderMeme()
+    drawFrame()
+}
+
+function makeId(length = 5) {
+	var id = ''
+	var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+
+	for (var i = 0; i < length; i++) {
+		id += possible.charAt(Math.floor(Math.random() * possible.length))
+	}
+	return id
+}
+
