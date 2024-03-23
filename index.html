@@ -14,9 +14,7 @@
 
 <body onload="onInit()" class="gallery">
 
-    <div class="main-screen" onclick="toggleMenu()"></div>
-
-    <div class="main-screen" onclick="toggleMenu()"></div>
+    <!-- <div class="main-screen" onclick="toggleMenu()"></div> -->
 
     <header class="main-header">
         <img class="logo" src="assets/logo/Memegen.png" onclick="backToGallery()">
@@ -24,7 +22,7 @@
             <button class="exit-menu-btn" type="button" onclick="toggleMenu()">X</button>
             <ul class="header-links">
                 <li><a class="gallery-link" href=# onclick="backToGallery()">Gallery</a></li>
-                <li><a href=#>Memes</a></li>
+                <li><a class="saved-memes-link" href=# onclick="showSavedMemes()">Memes</a></li>
                 <li><a href=#>About</a></li>
             </ul>
         </section>
@@ -36,14 +34,6 @@
         <div class="search-bar">
             <input type="text" placeholder="Search">
         </div>
-
-        <!-- <div class="upload-container">
-            <label for="file-upload" class="custom-file-upload">
-                <i class="fa-solid fa-upload"></i> 
-                Upload
-            </label>
-            <input id="file-upload" type="file" class="file-input btn" name="image" onchange="onImgInput(event)"accept="image/*" />            
-        </div> -->
 
         <div class="gallery-container">
         </div>
@@ -155,22 +145,34 @@
         </section>
 
         <section class="download-share">
+            <button class="save-meme btn" onclick="onSaveMeme()">
+                <i class="fa-solid fa-floppy-disk"></i>
+            </button>
             <button class="download-meme btn" onclick="onDownloadCanvas(this)">
-                Download <i class="fa-solid fa-download"></i>
+                <i class="fa-solid fa-download"></i>
             </button>
             <button class="share-meme btn" onclick="onShareCanvas()">
-                Share <i class="fa-solid fa-share-nodes"></i>
+                <i class="fa-solid fa-share-nodes"></i>
             </button>
             <button class="facebook-share btn" onclick="onFbShare()">
-                Facebook <i class="fa-brands fa-facebook"></i>
+                <i class="fa-brands fa-facebook"></i>
             </button>
         </section>
     </section>
 
-    <script src="js/galleryController.js"></script>
-    <script src="js/memeController.js"></script>
+
+    <section class="saved-memes hide">
+        <div class="saved-memes-container">
+        </div>
+    </section>
+
+    <script src="js/demo/demoData.js"></script>
     <script src="js/services/meme-service.js"></script>
     <script src="js/services/share-service.js"></script>
+    <script src="js/services/storage-service.js"></script>
+    <script src="js/savedMemesController.js"></script>
+    <script src="js/galleryController.js"></script>
+    <script src="js/memeController.js"></script>
 </body>
 
 </html>

@@ -29,11 +29,13 @@ function onTxtInput(elInput) {
 function coverCanvasWithImg(elImg) {
     const elEditor = document.querySelector('.meme-editor')
     const elGallery = document.querySelector('.gallery-view')
+    const elSavedGallery = document.querySelector('.saved-memes-container')
 
     gElCanvas.height = (elImg.naturalHeight / elImg.naturalWidth) * gElCanvas.width
     gCtx.drawImage(elImg, 0, 0, gElCanvas.width, gElCanvas.height)
 
     elGallery.classList.add('hide')
+    elSavedGallery.classList.add('hide')
     elEditor.classList.remove('hide')
 }
 
@@ -159,9 +161,6 @@ function drawFrame() {
     const currLine = meme.lines[idx]
 
     if (!currMeme.lines.length) return
-
-
-    // const currLine = currMeme.lines[currMeme.selectedLineIdx - 1]
 
     gCtx.save()
 
@@ -328,3 +327,4 @@ function findLineByIdx(index) {
 
     return line
 }
+

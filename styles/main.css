@@ -13,7 +13,7 @@ body.gallery .gallery-link {
     color: rgb(255, 170, 0);
 }
 
-.gallery-container {
+.gallery-container, .saved-memes-container {
     display: grid;
     position: absolute;
     grid-auto-flow: row;
@@ -236,17 +236,26 @@ input:focus {
 }
 
 .btn {
-    width: 7em;
+    width: 5.5em;
 
     border: none;
-    border-radius: 3em;
-    padding: 1em;
+    border-radius: 4em;
     margin-top: 1em;
+    padding: 1em;
 
     color: #fff;
     font-size: 0.9em;
     letter-spacing: 0.05em;
-    margin-left: 1em;
+    margin-left: 0.3em;
+}
+
+.btn>.fa-solid,
+.btn>.fa-brands {
+    font-size: large;
+}
+
+.btn:hover {
+    opacity: 0.8;
 }
 
 .download-meme {
@@ -259,6 +268,10 @@ input:focus {
 
 .facebook-share {
     background-color: rgb(72, 59, 246);
+}
+
+.save-meme {
+    background-color: rgb(207, 205, 205);
 }
 
 button:hover {
@@ -305,10 +318,3 @@ input[type="file"] {
     color: rgb(129, 127, 127);
     text-shadow: 1px 1px 3px #00000021;
 }
-
-
-/* <label for="file-upload" class="custom-file-upload">
-  <i class="fa-solid fa-upload"></i> 
-  Upload
-</label>
-<input id="file-upload" type="file" class="file-input btn" name="image" onchange="onImgInput(event)"accept="image/*" /> */

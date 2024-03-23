@@ -4,6 +4,7 @@ var gMeme
 
 function createMeme(imgId) {
     gMeme = {
+        imgUrl: null,
         selectedImgId: imgId,
         selectedLineIdx: 0,
         lines: [

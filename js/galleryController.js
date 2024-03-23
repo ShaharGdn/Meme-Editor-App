@@ -100,7 +100,6 @@ function toggleMenu() {
 }
 
 function onImgInput(ev) {
-    console.log('hekki:')
     loadImageFromInput(ev)
 }
 
