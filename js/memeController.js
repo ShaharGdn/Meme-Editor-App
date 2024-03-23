@@ -3,9 +3,11 @@
 let currMeme
 
 function renderMeme() {
-    const elImg = getElImg()
     currMeme = getMeme()
 
+    if (!currMeme) return
+
+    const elImg = getElImg()
     coverCanvasWithImg(elImg)
 
     const { lines } = currMeme
@@ -150,6 +152,9 @@ function drawText(text, pos, size, font, stroke, color, align) {
 
 function drawFrame() {
     const meme = getMeme()
+
+    if (!meme) return
+
     const idx = meme.selectedLineIdx
     const currLine = meme.lines[idx]
 

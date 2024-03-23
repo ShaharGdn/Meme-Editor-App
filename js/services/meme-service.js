@@ -68,6 +68,21 @@ function addLine(txt) {
     gMeme.selectedLineIdx = gMeme.lines.length -1
 }
 
+function removeLine() {
+    if (gMeme.lines.length === 0) return
+    
+    gMeme.lines.splice(gMeme.selectedLineIdx, 1)
+    
+    // Adjust the selected line index after removal
+    if (gMeme.selectedLineIdx >= gMeme.lines.length) {
+        gMeme.selectedLineIdx = gMeme.lines.length - 1;
+    }
+    // Ensure selected line index is within bounds
+    if (gMeme.selectedLineIdx < 0) {
+        gMeme.selectedLineIdx = -1;
+    }
+}
+
 function switchSelectedLine() {
     if (gMeme.lines.length === 0) return
 
@@ -127,17 +142,3 @@ function setFont(fontFamily) {
    currLine.font = fontFamily
 }
 
-function removeLine() {
-    if (gMeme.lines.length === 0) return
-    
-    gMeme.lines.splice(gMeme.selectedLineIdx, 1)
-    
-    // Adjust the selected line index after removal
-    if (gMeme.selectedLineIdx >= gMeme.lines.length) {
-        gMeme.selectedLineIdx = gMeme.lines.length - 1;
-    }
-    // Ensure selected line index is within bounds
-    if (gMeme.selectedLineIdx < 0) {
-        gMeme.selectedLineIdx = -1;
-    }
-}
