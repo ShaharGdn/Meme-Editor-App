@@ -11,8 +11,7 @@ function showSavedMemes() {
     const elEditor = document.querySelector('.meme-editor')
     const elGallery = document.querySelector('.gallery-view')
     const elSavedMemes = document.querySelector('.saved-memes')
-    const elAboutSec = document.querySelector('.about')
-
+    const elAboutSec = document.querySelector('.about-view')
 
     elAboutSec.classList.add('hide')
     elGallery.classList.add('hide')
@@ -26,6 +25,24 @@ function showSavedMemes() {
     elBody.classList.add('saved')
 
     renderSavedMemes()
+}
+
+function showAbout() {
+    const elEditor = document.querySelector('.meme-editor')
+    const elGallery = document.querySelector('.gallery-view')
+    const elSavedMemes = document.querySelector('.saved-memes')
+    const elAboutSec = document.querySelector('.about-view')
+
+    elGallery.classList.add('hide')
+    elEditor.classList.add('hide')
+    elSavedMemes.classList.add('hide')
+    elAboutSec.classList.remove('hide')
+
+    const elBody = document.querySelector('body')
+
+    elBody.classList.remove('gallery')
+    elBody.classList.remove('saved')
+    elBody.classList.add('about')
 }
 
 function renderSavedMemes() {
@@ -59,20 +76,3 @@ function onRenderSavedMeme(elImg) {
     drawFrame()
 }
 
-function showAbout() {
-    const elEditor = document.querySelector('.meme-editor')
-    const elGallery = document.querySelector('.gallery-view')
-    const elSavedMemes = document.querySelector('.saved-memes')
-    const elAboutSec = document.querySelector('.about')
-
-    elGallery.classList.add('hide')
-    elEditor.classList.add('hide')
-    elSavedMemes.classList.add('hide')
-    elAboutSec.classList.remove('hide')
-
-    const elBody = document.querySelector('body')
-
-    elBody.classList.remove('gallery')
-    elBody.classList.remove('saved')
-    elBody.classList.add('about')
-}

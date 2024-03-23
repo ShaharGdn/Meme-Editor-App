@@ -349,9 +349,9 @@ input[type="file"] {
 
 /* about1 */
 
-.about {
+.about-view {
     position: relative;
-    top: 2.5em;
+    top: 5em;
     margin-inline-start: 1.2em;
     color: #0000019f;
     font-family: roboto;
