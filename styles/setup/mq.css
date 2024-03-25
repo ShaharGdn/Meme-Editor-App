@@ -4,7 +4,7 @@
         position: fixed;
         top: 0;
         right: 0;
-        height: 100dvh;
+        height: 100%;
         background-color: #FF9826;
         border-inline-start: 1px solid #ccc;
         min-width: 200px;
@@ -124,7 +124,7 @@
     }
 
     .gallery-container {
-        top: 5em;
+        top: 6em;
     }
 
     .meme-editor:not(.hide) {

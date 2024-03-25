@@ -393,3 +393,8 @@ input[type="file"] {
     font-size: 1.1em;
     margin-inline-start: 0.1em;
 }
+
+.about-img {
+    max-width: 300px;
+    margin-right: 1em;
+}
