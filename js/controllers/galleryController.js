@@ -165,16 +165,6 @@ function createImg(elImg) {
     drawFrame()
 }
 
-function makeId(length = 5) {
-	var id = ''
-	var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
-
-	for (var i = 0; i < length; i++) {
-		id += possible.charAt(Math.floor(Math.random() * possible.length))
-	}
-	return id
-}
-
 function onLookup(ev, elValue) {
     ev.preventDefault()
     ev.stopPropagation()
@@ -214,4 +204,10 @@ function filterImages(options) {
 
 
     return images
+}
+
+function onRandomizeMeme() {
+    randomizeMeme()
+    renderMeme()
+    drawFrame()
 }

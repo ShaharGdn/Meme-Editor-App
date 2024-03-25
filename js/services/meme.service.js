@@ -142,3 +142,7 @@ function setFont(fontFamily) {
    currLine.font = fontFamily
 }
 
+function randomizeMeme() {
+    gMeme = createMeme(getRandomIntInclusive(1,38))
+    gMeme.lines[0].txt = `${makeWord(3)} ${makeWord(4)}`
+}

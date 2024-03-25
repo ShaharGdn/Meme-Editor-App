@@ -19,6 +19,7 @@
         <section class="main-nav">
             <button class="exit-menu-btn" type="button" onclick="toggleMenu()">X</button>
             <ul class="header-links">
+                <li><a class="random-meme" href=# onclick="onRandomizeMeme()">Random</a></li>
                 <li><a class="gallery-link" href=# onclick="backToGallery()">Gallery</a></li>
                 <li><a class="saved-memes-link" href=# onclick="showSavedMemes()">Memes</a></li>
                 <li><a class="about-link" href=# onclick="showAbout()">About</a></li>
@@ -190,9 +191,10 @@
     </footer> -->
 
     <script src="js/demo/demoData.js"></script>
-    <script src="js/services/meme-service.js"></script>
-    <script src="js/services/share-service.js"></script>
-    <script src="js/services/storage-service.js"></script>
+    <script src="js/services/util.service.js"></script>
+    <script src="js/services/meme.service.js"></script>
+    <script src="js/services/share.service.js"></script>
+    <script src="js/services/storage.service.js"></script>
     <script src="js/controllers/savedMemesController.js"></script>
     <script src="js/controllers/memeController.js"></script>
     <script src="js/controllers/galleryController.js"></script>
