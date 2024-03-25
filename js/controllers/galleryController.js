@@ -3,6 +3,11 @@
 let gElCanvas
 let gCtx
 let gStartPos
+let gFilteredImges
+
+const gQueryOptions = {
+    keyWord: ''
+}
 
 var gImgs = [
     { id: 1, url: 'assets/images/1.jpg', keywords: ['funny', 'trump'] },
@@ -60,10 +65,14 @@ function onInit() {
 }
 
 function renderImages() {
+    gFilteredImges = getImages(gQueryOptions)
+
+    if(!gFilteredImges) gFilteredImges = gImgs
+
     const elGallery = document.querySelector('.gallery-container')
 
-    const upladHTML = 
-    `<div class="upload-container">
+    const upladHTML =
+        `<div class="upload-container">
     <label for="file-upload" class="custom-file-upload">
         <i class="fa-solid fa-upload"></i> 
         Upload
@@ -71,11 +80,11 @@ function renderImages() {
     <input id="file-upload" type="file" class="file-input btn" name="image" onchange="onImgInput(event)"accept="image/*" />            
     </div>`
 
-    var imageHTML = gImgs.map(image => {
+    var imageHTML = gFilteredImges.map(image => {
         return `<img class='gallery-img img${image.id}' src='${image.url}' data-id='${image.id}' onclick=onImgSelect(this)>`
     })
 
-    elGallery.innerHTML = upladHTML +imageHTML.join('')
+    elGallery.innerHTML = upladHTML + imageHTML.join('')
 }
 
 function onImgSelect(elImg) {
@@ -98,6 +107,7 @@ function addListeners() {
         resizeCanvas()
         renderMeme()
         drawFrame()
+        // TODO: handle default text size (inside the meme)
     })
 }
 
@@ -165,3 +175,43 @@ function makeId(length = 5) {
 	return id
 }
 
+function onLookup(ev, elValue) {
+    ev.preventDefault()
+    ev.stopPropagation()
+
+    gQueryOptions.keyWord = elValue.value
+
+    renderImages()
+}
+
+function getImages(options = {}) {
+    if (!options.keyWord) return gImgs
+
+    var images = filterImages(options)
+
+    // if (options.sortBy.title) {
+    //     books.sort((book1, book2) => book1.name.localeCompare(book2.name) * options.sortBy.title)
+    // } else if (options.sortBy.price) {
+    //     books.sort((book1, book2) => (book1.price - book2.price) * options.sortBy.price)
+    // } else if (options.sortBy.rating) {
+    //     books.sort((book1, book2) => (book1.rating - book2.rating) * options.sortBy.rating)
+    // } else if (options.sortBy.author) {
+    //     books.sort((book1, book2) => book1.author.localeCompare(book2.author) * options.sortBy.author)
+    // }
+
+    return images
+}
+
+function filterImages(options) {
+    const valueLower = options.keyWord.toLowerCase()
+
+    var images = gImgs.filter(img => {
+        return img.keywords.some(keyword => {
+            const keywordLower = keyword.toLowerCase();
+            return keywordLower.startsWith(valueLower) || keywordLower.includes(valueLower);
+        })
+    })
+
+
+    return images
+}

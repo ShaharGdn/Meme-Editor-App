@@ -24,13 +24,13 @@
                 <li><a class="about-link" href=# onclick="showAbout()">About</a></li>
             </ul>
         </section>
-        </section>
+       
         <button class="toggle-menu-btn" type="button" onclick="toggleMenu()">☰</button>
     </header>
 
     <section class="gallery-view">
         <div class="search-bar">
-            <input type="text" placeholder="Search">
+            <input type="text" placeholder="Search" oninput="onLookup(event, this)">
         </div>
 
         <div class="gallery-container">
