@@ -6,20 +6,24 @@
 
 body {
     background-color: #F8F8F8;
-    font-family: 'Roboto, sans-serif';
+    /* font-family: 'Roboto, sans-serif'; */
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+
 }
 
 body.gallery .gallery-link {
     color: rgb(255, 170, 0);
 }
+
 body.saved .saved-memes-link {
     color: rgb(255, 170, 0);
 }
+
 body.about .about-link {
     color: rgb(255, 170, 0);
 }
 
-.gallery-container, .saved-memes-container {
+.saved-memes-container {
     display: grid;
     position: absolute;
     grid-auto-flow: row;
@@ -33,12 +37,55 @@ body.about .about-link {
     align-items: center;
 }
 
+.gallery-container {
+    display: grid;
+    position: absolute;
+    grid-auto-flow: row;
+    grid-auto-rows: auto;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    max-width: 99vw;
+    margin-block-start: 1em;
+    column-gap: 0.6em;
+    row-gap: 2em;
+    place-items: center;
+    align-items: center;
+}
+
 img.gallery-img {
     max-width: 180px;
     margin-inline-start: 1em;
     border-radius: 1em;
     cursor: pointer;
     -webkit-user-drag: none;
+}
+
+.keywords-container {
+    display: grid;
+    margin-top: 5em;
+    grid-auto-flow: column;
+    grid-auto-rows: auto;
+    grid-auto-columns: repeat(10, 20px);
+    grid-template-rows: repeat(1, 20px);
+    column-gap: 0.5em;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    place-content: center;
+    text-align: center;
+    row-gap: 0.5em;
+}
+
+.keyword-link{
+    font-size: 16px;
+    text-decoration: none;
+    color: rgb(94, 94, 94);
+}
+
+.clear-filter {
+    border: none;
+    border-radius: 1em;
+    font-size: 16px;
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+    background-color: #b7b6b6;
 }
 
 .main-header {
@@ -328,27 +375,6 @@ input[type="file"] {
     cursor: pointer;
 }
 
-/* footer */
-
-/* footer {
-    position: absolute;
-    bottom: 0;
-
-    display: flex;
-    justify-content: end;
-    gap: 20px;
-
-    padding: 10px;
-    background-color: rgb(233, 223, 206);
-    width: 100%;
-
-    align-items: center;
-    justify-content: center; 
-} */
-
-
-/* about1 */
-
 .about-view {
     position: relative;
     top: 5em;
@@ -362,6 +388,7 @@ input[type="file"] {
     color: #000001c9;
     font-size: 1.5em;
 }
+
 .about-txt {
     font-size: 1.1em;
     margin-inline-start: 0.1em;

@@ -88,6 +88,13 @@
 }
 
 @media(max-width: 630px) {
+    .keywords-container {
+        display: none;
+    }
+
+    .gallery-container {
+        top: 5em;
+    }
     .gallery-container {
         grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
         place-content: center;
@@ -112,6 +119,14 @@
 }
 
 @media (max-width: 900px) {
+    .keywords-container {
+        display: none;
+    }
+
+    .gallery-container {
+        top: 5em;
+    }
+
     .meme-editor:not(.hide) {
         background: none;
         display: flex;
