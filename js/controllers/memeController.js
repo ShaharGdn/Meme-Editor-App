@@ -24,6 +24,7 @@ function onTxtInput(elInput) {
     setLineTxt(value)
 
     renderMeme()
+    drawFrame()
 }
 
 function coverCanvasWithImg(elImg) {
@@ -103,6 +104,7 @@ function onDecreaseFont(ev) {
 }
 
 function onAddLine(txt = 'Enter Text') {
+    console.log(gMeme.selectedLineIdx)
     addLine(txt)
 
     renderMeme()

@@ -1,7 +1,7 @@
 'use strict'
 
 function onFbShare() {
-    renderMeme()
+  renderMeme()
   const imgDataUrl = gElCanvas.toDataURL('image/jpeg')
 
   function onSuccess(uploadedImgUrl) {
@@ -38,3 +38,13 @@ function doUploadImg(imgDataUrl, onSuccess) {
   XHR.send(formData)
 }
 
+const shareButton = document.querySelector('.share-meme')
+
+shareButton.addEventListener("click", async () => {
+  try {
+    await navigator.share({ title: "Example Page", url: `${gElCanvas.toDataURL('image/jpeg')}` });
+    console.log("Data was shared successfully");
+  } catch (err) {
+    console.error("Share failed:", err.message);
+  }
+});
