@@ -209,6 +209,10 @@ function filterImages(options) {
 }
 
 function onRandomizeMeme() {
+    const elAboutSec = document.querySelector('.about-view')
+    elAboutSec.classList.add('hide')
+
+
     randomizeMeme()
     renderMeme()
     drawFrame()
