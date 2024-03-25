@@ -210,4 +210,5 @@ function onRandomizeMeme() {
     randomizeMeme()
     renderMeme()
     drawFrame()
+    toggleMenu()
 }

@@ -25,6 +25,7 @@ function showSavedMemes() {
     elBody.classList.add('saved')
 
     renderSavedMemes()
+    toggleMenu()
 }
 
 function showAbout() {
@@ -43,6 +44,8 @@ function showAbout() {
     elBody.classList.remove('gallery')
     elBody.classList.remove('saved')
     elBody.classList.add('about')
+
+    toggleMenu()
 }
 
 function renderSavedMemes() {
